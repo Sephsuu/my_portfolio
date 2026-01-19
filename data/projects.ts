@@ -107,6 +107,20 @@ export const projects = [
         role: "Full Stack Developer"
     },
     { 
+        title: "Calzada: An Ecommerce Website",
+        description: "An ecommerce website that showcase products and simulate adding to cart and purchasing order just like in any online shop websites.",
+        technologies: [
+            "HTML",
+            "CSS",
+            "JavaScript",
+            "Django"
+        ],
+        images: [
+            "calzada_1.png",
+        ],
+        role: "Full Stack Developer"
+    },
+    { 
         title: "Tkinter Baking System",
         description: "A desktop-based ATM simulation built with Tkinter that allows deposit, withdraw, and check account balances through a GUI.",
         technologies: [

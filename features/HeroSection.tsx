@@ -36,11 +36,13 @@ export function HeroSection() {
                     <div className="w-8/10 text-xl">
                         Motivated IT student with nearly 4 years of hands-on experience in full-stack web development.
                     </div>
-                    <Button 
-                        className="w-fit mt-2 bg-black hover:opacity-90 text-lg"
-                    >
-                        Download CV
-                    </Button> 
+                    <a href="/files/BATALLER_RESUME.pdf" download>
+                        <Button 
+                            className="w-fit mt-2 bg-black hover:opacity-90 text-lg"
+                        >
+                            Download CV
+                        </Button>
+                    </a>
                 </div>
             </div>
 
