@@ -1,6 +1,7 @@
 "use client"
 
 import { Button } from "@/components/ui/button";
+import { HoverCard, HoverCardContent, HoverCardTrigger } from "@/components/ui/hover-card";
 import { Separator } from "@/components/ui/separator";
 import { projects } from "@/data/projects";
 import { useState } from "react";
@@ -51,11 +52,19 @@ export function ExperienceSection() {
                                 <span className="font-bold mr-2">Role:</span> 
                                 <span>{item.role}</span>
                             </div>
-                            <Button
-                                className="rounded-none mt-2 text-lg hover:text-black hover:border hover:border-black hover:bg-slate-50"
-                            >
-                                View More
-                            </Button>
+                            <HoverCard>
+                                <HoverCardTrigger>
+                                    <Button
+                                        className="rounded-none mt-2 text-lg hover:text-black hover:border hover:border-black hover:bg-slate-50"
+                                        disabled
+                                    >
+                                        View More
+                                    </Button>
+                                </HoverCardTrigger>
+                                <HoverCardContent>
+                                    Viewing of project is unavailable as of the moment.
+                                </HoverCardContent>
+                            </HoverCard>
                         </div>
                     </div>
                 ))}
