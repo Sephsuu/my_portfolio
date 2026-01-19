@@ -12,6 +12,10 @@ const technologies = [
     {name: "Next.js", src: "/images/technologies/nodejs.png", imgSize: "w-35"},
     {name: "Flutter", src: "/images/technologies/expressjs.png", imgSize: "w-50"},
     {name: "shadcn/ui", src: "/images/technologies/nestjs.png", imgSize: "w-21 rounded-lg"},
+
+    {name: "Next.js", src: "/images/technologies/sql.png", imgSize: "w-35"},
+    {name: "Flutter", src: "/images/technologies/mongodb.png", imgSize: "w-50"},
+    {name: "shadcn/ui", src: "/images/technologies/supabase.png", imgSize: "w-55 rounded-lg"},
 ]
 
 export function SkillsSection() {
