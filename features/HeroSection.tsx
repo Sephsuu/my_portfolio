@@ -29,7 +29,7 @@ export function HeroSection() {
                     ))}
                 </div>
 
-                <div className="mt-24 ms-12">
+                <div className="mt-24 ms-12 space-y-2">
                     <div className="text-4xl font-bold w-8/10">
                         Building scalable apps with user-first design.
                     </div>
@@ -47,11 +47,13 @@ export function HeroSection() {
         
 
           
-            <div className="absolute text-9xl bottom-0 right-0 text-transparent [-webkit-text-stroke:1px_#62748e] arial-black text-right z-50">
+            <div className="absolute bottom-0 right-0 text-9xl font-black text-transparent 
+                            [-webkit-text-stroke:1px_#f8fafc] 
+                            mix-blend-difference text-right z-50 pointer-events-none arial-black">
                 <div>JOSEPH</div>
                 <div>BATALLER</div>
             </div>
-                
+                            
           
             
         </section>

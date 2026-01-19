@@ -1,17 +1,17 @@
 const technologies = [
-    {name: "Bootstrap", src: "/images/bootstrap.png", imgSize: "w-30", textClass: "-mt-4"},
-    {name: "Tailwind CSS", src: "/images/tailwindcss.png", imgSize: "w-55", textClass: "-mt-18"},
-    {name: "React", src: "/images/react.png", imgSize: "w-24" },
-    {name: "Next.js", src: "/images/nextjs.png", imgSize: "w-40"},
-    {name: "Flutter", src: "/images/flutter.png", imgSize: "w-50"},
-    {name: "shadcn/ui", src: "/images/shadcn.png", imgSize: "w-21 rounded-lg"},
+    {name: "Bootstrap", src: "/images/technologies/bootstrap.png", imgSize: "w-30", textClass: "-mt-4"},
+    {name: "Tailwind CSS", src: "/images/technologies/tailwindcss.png", imgSize: "w-55", textClass: "-mt-18"},
+    {name: "React", src: "/images/technologies/react.png", imgSize: "w-24" },
+    {name: "Next.js", src: "/images/technologies/nextjs.png", imgSize: "w-40"},
+    {name: "Flutter", src: "/images/technologies/flutter.png", imgSize: "w-50"},
+    {name: "shadcn/ui", src: "/images/technologies/shadcn.png", imgSize: "w-21 rounded-lg"},
 
-    {name: "Python", src: "/images/python.png", imgSize: "w-45", textClass: "-mt-4"},
-    {name: "Tailwind CSS", src: "/images/django.png", imgSize: "w-50", textClass: "-mt-18"},
-    {name: "React", src: "/images/laravel.png", imgSize: "w-45" },
-    {name: "Next.js", src: "/images/nodejs.png", imgSize: "w-35"},
-    {name: "Flutter", src: "/images/expressjs.png", imgSize: "w-50"},
-    {name: "shadcn/ui", src: "/images/nestjs.png", imgSize: "w-21 rounded-lg"},
+    {name: "Python", src: "/images/technologies/python.png", imgSize: "w-45", textClass: "-mt-4"},
+    {name: "Tailwind CSS", src: "/images/technologies/django.png", imgSize: "w-50", textClass: "-mt-18"},
+    {name: "React", src: "/images/technologies/laravel.png", imgSize: "w-45" },
+    {name: "Next.js", src: "/images/technologies/nodejs.png", imgSize: "w-35"},
+    {name: "Flutter", src: "/images/technologies/expressjs.png", imgSize: "w-50"},
+    {name: "shadcn/ui", src: "/images/technologies/nestjs.png", imgSize: "w-21 rounded-lg"},
 ]
 
 export function SkillsSection() {
@@ -22,7 +22,10 @@ export function SkillsSection() {
             <div className="flex-center">
                 <div className="max-w-300 grid grid-cols-3 gap-8">
                     {technologies.map((item) => (
-                        <div className="bg-slate-100 shadow-md rounded-md flex-center flex-col h-35 w-80">
+                        <div 
+                            key={item.src}
+                            className="bg-slate-100 shadow-md rounded-md flex-center flex-col h-35 w-80"
+                        >
                             <img
                                 src={item.src}
                                 className={`${item.imgSize}`}
