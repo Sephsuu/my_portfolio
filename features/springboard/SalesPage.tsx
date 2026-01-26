@@ -27,7 +27,7 @@ export function SalesPage() {
         async function fetchData() {
             setLoading(true);
             try {   
-                const res = await fetch(`${BASE_URL}/api/sales?year=${year}`, {
+                const res = await fetch(`/api/sales?year=${year}`, {
                     method: "GET",
                     headers: { "Content-Type": "application/json" }
                 })
@@ -67,6 +67,7 @@ export function SalesPage() {
                 <div className="shadow-sm shadow-green-900 bg-white rounded-md">
                     {GRAPHS.map((item) => (
                         <Button
+                            key={item}
                             onClick={() => setGraph(item)}
                             className={`w-25 bg-white text-black text-lg ${graph === item && "bg-black text-white"} hover:bg-slate-200`}
                         >
