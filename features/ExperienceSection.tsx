@@ -10,52 +10,67 @@ import { Fragment } from "react/jsx-runtime";
 export function ExperienceSection() {
     const [projCount, setProjCount] = useState(3);
     return (
-        <section className="p-4">
-            <div className="text-4xl font-bold text-center my-8">Hands-on Experience</div>
+        <section
+            id="experiences"
+            className="scroll-mt-6 px-4 py-14 sm:px-6 sm:py-18 lg:px-8 lg:py-24"
+        >
+            <h2 className="mb-10 text-center text-3xl font-bold sm:mb-14 sm:text-4xl lg:text-5xl">
+                Hands-on Experience
+            </h2>
 
-            <div className="space-y-10">
+            <div className="mx-auto max-w-340 space-y-14 sm:space-y-18 lg:space-y-24">
                 {projects.slice(0, projCount).map((item, i) => (
-                    <div 
-                        className={`grid grid-cols-2`} 
+                    <article
+                        className="grid items-center gap-6 lg:grid-cols-2 lg:gap-10 xl:gap-16"
                         key={item.title}
                     >
-                        <div className={`${i % 2 === 0 ? "order-1" : "order-2"}`}>
-                            <img 
+                        <div
+                            className={`order-1 min-w-0 ${
+                                i % 2 === 0 ? "lg:order-1" : "lg:order-2"
+                            }`}
+                        >
+                            <img
                                 src={`/images/projects/${item.images[0]}`}
-                                className="w-150 mx-auto rounded-xl shadow-md border border-slate-300"
+                                alt={`${item.title} project preview`}
+                                className="mx-auto h-auto w-full max-w-150 rounded-xl border border-slate-300 object-cover shadow-md"
                             />
                         </div>
-                        <div 
-                            className={`${i % 2 === 0 
-                                ? "order-2 text-left items-start" 
-                                : "order-1 text-right items-end ml-auto"} 
-                                my-auto space-y-2 w-8/10 flex flex-col`}
+                        <div
+                            className={`order-2 flex min-w-0 flex-col items-start text-left ${
+                                i % 2 === 0
+                                    ? "lg:order-2"
+                                    : "lg:order-1 lg:items-end lg:text-right"
+                            }`}
                         >
-                            <div className="text-2xl font-bold hover:underline cursor-pointer">{item.title}</div>
-                            <Separator className="bg-slate-300" />
-                            <div className="">
+                            <h3 className="text-xl font-bold leading-snug hover:underline sm:text-2xl lg:text-3xl">
+                                {item.title}
+                            </h3>
+                            <Separator className="my-3 bg-slate-300" />
+                            <p className="leading-relaxed text-slate-700 sm:text-lg">
                                 {item.description}
-                            </div>
-                            <div className="mt-4">
-                                <span className="font-bold mr-2">Technologies:</span> 
+                            </p>
+                            <div
+                                className={`mt-5 flex flex-wrap gap-x-1.5 gap-y-1 ${
+                                    i % 2 !== 0 ? "lg:justify-end" : ""
+                                }`}
+                            >
+                                <span className="font-bold">Technologies:</span>
                                 {item.technologies.map((tech) => (
                                     <Fragment key={tech}>
-                                        <span 
-                                            className="mr-1.5 hover:font-bold hover:underline cursor-pointer"
-                                        >
+                                        <span className="hover:font-bold hover:underline">
                                             {tech},
                                         </span>
                                     </Fragment>
                                 ))}
                             </div>
-                            <div>
-                                <span className="font-bold mr-2">Role:</span> 
+                            <div className="mt-2">
+                                <span className="mr-2 font-bold">Role:</span>
                                 <span>{item.role}</span>
                             </div>
                             <HoverCard>
                                 <HoverCardTrigger>
                                     <Button
-                                        className="rounded-none mt-2 text-lg hover:text-black hover:border hover:border-black hover:bg-slate-50"
+                                        className="mt-4 rounded-none text-base hover:border hover:border-black hover:bg-slate-50 hover:text-black sm:text-lg"
                                         disabled
                                     >
                                         View More
@@ -66,14 +81,14 @@ export function ExperienceSection() {
                                 </HoverCardContent>
                             </HoverCard>
                         </div>
-                    </div>
+                    </article>
                 ))}
             </div>
 
             {projCount < projects.length && (
                 <button
                     onClick={() => setProjCount(prev => prev + 3)}
-                    className="underline text-5xl mx-auto flex-center mt-18"
+                    className="mx-auto mt-14 flex items-center justify-center text-2xl underline transition-opacity hover:opacity-60 sm:mt-18 sm:text-3xl lg:text-4xl"
                 >
                     See More
                 </button>
