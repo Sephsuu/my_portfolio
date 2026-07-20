@@ -1,7 +1,7 @@
+import { ContactSection } from "@/features/ContactSection";
 import { ExperienceSection } from "@/features/ExperienceSection";
 import { HeroSection } from "@/features/HeroSection";
 import { SkillsSection } from "@/features/SkillsSection";
-import Image from "next/image";
 
 export default function Home() {
     return (
@@ -9,6 +9,7 @@ export default function Home() {
             <HeroSection />
             <SkillsSection />
 			<ExperienceSection />
+            <ContactSection />
         </section>
     );
 }
