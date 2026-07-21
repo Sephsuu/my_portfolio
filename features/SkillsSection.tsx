@@ -1,3 +1,5 @@
+import { SectionReveal } from "@/components/custom/SectionReveal"
+
 const technologies = [
     {name: "Bootstrap", src: "/images/technologies/bootstrap.png", imgSize: "w-30 max-md:w-25", textClass: "-mt-4"},
     {name: "Tailwind CSS", src: "/images/technologies/tailwindcss.png", imgSize: "w-55 max-md:w-50!", textClass: "-mt-18"},
@@ -20,9 +22,9 @@ const technologies = [
 
 export function SkillsSection() {
     return (
-        <section
+        <SectionReveal
             id="skills"
-            className="scroll-mt-6 px-4 py-14 sm:px-6 sm:py-18 lg:px-8 lg:py-24"
+            className="scroll-mt-20 px-4 py-14 sm:px-6 sm:py-18 lg:px-8 lg:py-24"
         >
             <h2 className="mb-10 text-center text-3xl font-bold sm:mb-12 sm:text-4xl lg:text-5xl">
                 Technologies Used
@@ -42,6 +44,6 @@ export function SkillsSection() {
                     </div>
                 ))}
             </div>
-        </section>
+        </SectionReveal>
     )
 }

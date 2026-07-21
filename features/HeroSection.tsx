@@ -2,22 +2,15 @@ import Image from "next/image"
 
 import { Button } from "@/components/ui/button"
 
-const routes = [
-    { title: "Home", href: "#home" },
-    { title: "Skills", href: "#skills" },
-    { title: "Experiences", href: "#experiences" },
-    { title: "Contacts", href: "#contacts" },
-]
-
 export function HeroSection() {
     return (
         <section
             id="home"
-            className="relative isolate mx-auto min-h-svh max-w-360 overflow-hidden"
+            className="relative isolate mx-auto min-h-[calc(100svh-4rem)] max-w-360 scroll-mt-16 overflow-hidden"
         >
             <div className="absolute inset-y-0 left-0 hidden w-1/2 bg-slate-100 md:block" />
 
-            <div className="relative z-10 grid min-h-svh md:grid-cols-2">
+            <div className="relative z-10 grid min-h-[calc(100svh-4rem)] md:grid-cols-2">
                 <div className="relative order-2 min-h-[min(100vw,32rem)] bg-slate-100 md:order-1 md:min-h-0 md:bg-transparent">
                     <Image
                         src="/images/hero.png"
@@ -29,22 +22,7 @@ export function HeroSection() {
                     />
                 </div>
 
-                <div className="order-1 flex min-w-0 flex-col px-5 pb-12 pt-6 sm:px-10 md:order-2 md:px-10 md:pb-20 md:pt-8 lg:px-14">
-                    <nav
-                        aria-label="Primary navigation"
-                        className="flex flex-wrap items-center justify-center gap-x-5 gap-y-2 sm:gap-x-8"
-                    >
-                        {routes.map((item) => (
-                            <a
-                                key={item.title}
-                                href={item.href}
-                                className="text-base transition-opacity hover:opacity-60 sm:text-lg"
-                            >
-                                {item.title}
-                            </a>
-                        ))}
-                    </nav>
-
+                <div className="order-1 flex min-w-0 flex-col px-5 pb-12 sm:px-10 md:order-2 md:px-10 md:pb-20 lg:px-14">
                     <div className="flex flex-1 flex-col items-center justify-center pt-16 pb-0 text-center md:items-start md:py-10 md:text-left">
                         <h1 className="max-w-xl text-[clamp(2.5rem,11vw,4.5rem)] leading-[1.05] font-bold tracking-tight md:text-[clamp(2.25rem,3.4vw,3.5rem)]">
                             Building scalable apps with user-first design.

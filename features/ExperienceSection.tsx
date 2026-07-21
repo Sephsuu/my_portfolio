@@ -1,6 +1,7 @@
 "use client"
 
 import { Button } from "@/components/ui/button";
+import { SectionReveal } from "@/components/custom/SectionReveal";
 import { HoverCard, HoverCardContent, HoverCardTrigger } from "@/components/ui/hover-card";
 import { Separator } from "@/components/ui/separator";
 import { projects } from "@/data/projects";
@@ -10,9 +11,9 @@ import { Fragment } from "react/jsx-runtime";
 export function ExperienceSection() {
     const [projCount, setProjCount] = useState(3);
     return (
-        <section
+        <SectionReveal
             id="experiences"
-            className="scroll-mt-6 px-4 py-14 sm:px-6 sm:py-18 lg:px-8 lg:py-24"
+            className="scroll-mt-20 px-4 py-14 sm:px-6 sm:py-18 lg:px-8 lg:py-24"
         >
             <h2 className="mb-10 text-center text-3xl font-bold sm:mb-14 sm:text-4xl lg:text-5xl">
                 Hands-on Experience
@@ -94,6 +95,6 @@ export function ExperienceSection() {
                 </button>
             )}
 
-        </section>
+        </SectionReveal>
     )
 }
