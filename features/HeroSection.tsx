@@ -35,7 +35,7 @@ export function HeroSection() {
                             asChild
                             className="mt-7 h-auto bg-black px-6 py-3 text-base text-white hover:bg-black/85 sm:text-lg"
                         >
-                            <a href="/files/BATALLER_RESUME.pdf" download>
+                            <a href="/files/BATALLER_CV.pdf" download>
                                 Download CV
                             </a>
                         </Button>
