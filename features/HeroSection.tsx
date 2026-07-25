@@ -8,6 +8,13 @@ export function HeroSection() {
             id="home"
             className="bg-feather relative isolate mx-auto min-h-[calc(100svh-4rem)] max-w-360 scroll-mt-16 overflow-hidden"
         >
+            <div
+                className="absolute inset-0 z-0"
+                style={{
+                background:
+                    "radial-gradient(125% 125% at 50% 90%, var(--background) 40%, #deccc1 100%)",
+                }}
+            />
             <div className="absolute inset-y-0 left-0 hidden w-1/2 bg-[radial-gradient(ellipse_60%_18%_at_50%_100%,rgba(73,61,51,0.2)_0%,transparent_70%),radial-gradient(ellipse_75%_65%_at_50%_35%,#ddd7cf_0%,#c9c1b6_52%,#ada397_100%)] md:block" />
 
             <div className="relative z-10 grid min-h-[calc(100svh-4rem)] md:grid-cols-2">
@@ -48,7 +55,7 @@ export function HeroSection() {
                 className="pointer-events-none absolute right-2 bottom-2 z-20 text-right font-black text-transparent [-webkit-text-stroke:1px_#58382a] text-[clamp(3.25rem,14vw,8rem)] leading-[0.78] arial-black sm:right-4 md:[-webkit-text-stroke:1.5px_#58382a] md:text-[clamp(5rem,8vw,8rem)]"
             >
                 <div>JOSEPH</div>
-                <div>BATALLER</div>
+                <div>EMANUEL</div>
             </div>
 
             <div
@@ -57,7 +64,7 @@ export function HeroSection() {
             >
                 <div className="absolute right-2 bottom-2 text-right font-black text-transparent [-webkit-text-stroke:1px_#fff] text-[clamp(3.25rem,14vw,8rem)] leading-[0.78] arial-black sm:right-4 md:[-webkit-text-stroke:1.5px_#fff] md:text-[clamp(5rem,8vw,8rem)]">
                     <div>JOSEPH</div>
-                    <div>BATALLER</div>
+                    <div>EMANUEL</div>
                 </div>
             </div>
         </section>
