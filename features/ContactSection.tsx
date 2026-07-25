@@ -6,7 +6,7 @@ export function ContactSection() {
     return (
         <SectionReveal
             id="contacts"
-            className="scroll-mt-20 bg-black px-4 py-14 text-white sm:px-6 sm:py-18 lg:px-8 lg:py-24"
+            className="scroll-mt-20 bg-[#3c2000] px-4 py-14 text-white sm:px-6 sm:py-18 lg:px-8 lg:py-24"
         >
             <div className="mx-auto grid max-w-340 gap-12 lg:grid-cols-2 lg:items-center lg:gap-16">
                 <div className="min-w-0 text-center lg:text-right">

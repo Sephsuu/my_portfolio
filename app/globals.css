@@ -157,6 +157,11 @@ html {
   --sidebar-ring: oklch(0.556 0 0);
 }
 
+@theme inline {
+  --color-feather: #faf9f6;
+  --color-roast: #58382a;
+}
+
 @layer base {
   * {
     @apply border-border outline-ring/50;

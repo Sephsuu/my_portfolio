@@ -24,9 +24,9 @@ export function SkillsSection() {
     return (
         <SectionReveal
             id="skills"
-            className="scroll-mt-20 px-4 py-14 sm:px-6 sm:py-18 lg:px-8 lg:py-24"
+            className="bg-feather scroll-mt-20 px-4 py-14 sm:px-6 sm:py-18 lg:px-8 lg:py-24"
         >
-            <h2 className="mb-10 text-center text-3xl font-bold sm:mb-12 sm:text-4xl lg:text-5xl">
+            <h2 className="text-roast mb-10 text-center text-3xl font-bold sm:mb-12 sm:text-4xl lg:text-5xl">
                 Technologies Used
             </h2>
 
@@ -34,12 +34,12 @@ export function SkillsSection() {
                 {technologies.map((item) => (
                     <div
                         key={item.src}
-                        className="flex h-28 min-w-0 items-center justify-center rounded-md bg-slate-100 p-4 shadow-md sm:h-32 sm:p-5 lg:h-36"
+                        className="border flex h-28 min-w-0 items-center justify-center rounded-md bg-white p-4 shadow-sm sm:h-32 sm:p-5 lg:h-36"
                     >
                         <img
                             src={item.src}
                             alt={item.name}
-                            className={`${item.imgSize} max-h-18 max-w-[80%] object-contain sm:max-h-22 lg:max-h-24`}
+                            className={`${item.imgSize} max-h-18 max-w-[80%] object-contain [filter:brightness(0)_saturate(100%)_invert(22%)_sepia(18%)_saturate(1500%)_hue-rotate(335deg)_brightness(90%)_contrast(90%)] sm:max-h-22 lg:max-h-24`}
                         />
                     </div>
                 ))}

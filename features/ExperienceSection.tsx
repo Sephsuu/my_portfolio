@@ -13,9 +13,9 @@ export function ExperienceSection() {
     return (
         <SectionReveal
             id="experiences"
-            className="scroll-mt-20 px-4 py-14 sm:px-6 sm:py-18 lg:px-8 lg:py-24"
+            className="bg-feather scroll-mt-20 px-4 py-14 sm:px-6 sm:py-18 lg:px-8 lg:py-24"
         >
-            <h2 className="mb-10 text-center text-3xl font-bold sm:mb-14 sm:text-4xl lg:text-5xl">
+            <h2 className="text-roast mb-10 text-center text-3xl font-bold sm:mb-14 sm:text-4xl lg:text-5xl">
                 Hands-on Experience
             </h2>
 
@@ -43,11 +43,11 @@ export function ExperienceSection() {
                                     : "lg:order-1 lg:items-end lg:text-right"
                             }`}
                         >
-                            <h3 className="text-xl font-bold leading-snug hover:underline sm:text-2xl lg:text-3xl">
+                            <h3 className="text-roast text-xl font-bold leading-snug hover:underline sm:text-2xl lg:text-3xl">
                                 {item.title}
                             </h3>
                             <Separator className="my-3 bg-slate-300" />
-                            <p className="leading-relaxed text-slate-700 sm:text-lg">
+                            <p className="leading-relaxed text-roast/80 sm:text-lg">
                                 {item.description}
                             </p>
                             <div
@@ -55,23 +55,23 @@ export function ExperienceSection() {
                                     i % 2 !== 0 ? "lg:justify-end" : ""
                                 }`}
                             >
-                                <span className="font-bold">Technologies:</span>
+                                <span className="text-roast font-bold">Technologies:</span>
                                 {item.technologies.map((tech) => (
                                     <Fragment key={tech}>
-                                        <span className="hover:font-bold hover:underline">
+                                        <span className="text-roast hover:font-bold hover:underline">
                                             {tech},
                                         </span>
                                     </Fragment>
                                 ))}
                             </div>
                             <div className="mt-2">
-                                <span className="mr-2 font-bold">Role:</span>
-                                <span>{item.role}</span>
+                                <span className="mr-2 font-bold text-roast">Role:</span>
+                                <span className="text-roast">{item.role}</span>
                             </div>
                             <HoverCard>
                                 <HoverCardTrigger>
                                     <Button
-                                        className="mt-4 rounded-none text-base hover:border hover:border-black hover:bg-slate-50 hover:text-black sm:text-lg"
+                                        className="bg-roast mt-4 rounded-none text-base hover:border hover:border-black hover:bg-slate-50 hover:text-black sm:text-lg"
                                         disabled
                                     >
                                         View More
