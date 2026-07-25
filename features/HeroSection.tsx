@@ -45,7 +45,7 @@ export function HeroSection() {
 
             <div
                 aria-hidden="true"
-                className="pointer-events-none absolute right-2 bottom-2 z-20 text-right font-black text-transparent [-webkit-text-stroke:1px_#58382a] [font-size:clamp(3.25rem,14vw,8rem)] leading-[0.78] arial-black sm:right-4 md:[-webkit-text-stroke:1.5px_#58382a] md:[font-size:clamp(5rem,8vw,8rem)]"
+                className="pointer-events-none absolute right-2 bottom-2 z-20 text-right font-black text-transparent [-webkit-text-stroke:1px_#58382a] text-[clamp(3.25rem,14vw,8rem)] leading-[0.78] arial-black sm:right-4 md:[-webkit-text-stroke:1.5px_#58382a] md:text-[clamp(5rem,8vw,8rem)]"
             >
                 <div>JOSEPH</div>
                 <div>BATALLER</div>
@@ -55,7 +55,7 @@ export function HeroSection() {
                 aria-hidden="true"
                 className="pointer-events-none absolute inset-0 z-20 md:[clip-path:inset(0_50%_0_0)]"
             >
-                <div className="absolute right-2 bottom-2 text-right font-black text-transparent [-webkit-text-stroke:1px_#fff] [font-size:clamp(3.25rem,14vw,8rem)] leading-[0.78] arial-black sm:right-4 md:[-webkit-text-stroke:1.5px_#fff] md:[font-size:clamp(5rem,8vw,8rem)]">
+                <div className="absolute right-2 bottom-2 text-right font-black text-transparent [-webkit-text-stroke:1px_#fff] text-[clamp(3.25rem,14vw,8rem)] leading-[0.78] arial-black sm:right-4 md:[-webkit-text-stroke:1.5px_#fff] md:text-[clamp(5rem,8vw,8rem)]">
                     <div>JOSEPH</div>
                     <div>BATALLER</div>
                 </div>

@@ -13,7 +13,7 @@ export function ContactSection() {
                     <p className="mb-3 text-2xl sm:text-3xl lg:text-4xl">
                         Get in touch with
                     </p>
-                    <h2 className="text-transparent [-webkit-text-stroke:1.5px_#fff] [font-size:clamp(3.75rem,15vw,7rem)] leading-[0.82] tracking-tight arial-black sm:[-webkit-text-stroke:2px_#fff] lg:[font-size:clamp(5rem,8vw,8rem)]">
+                    <h2 className="text-transparent [-webkit-text-stroke:1.5px_#fff] text-[clamp(3.75rem,15vw,7rem)] leading-[0.82] tracking-tight arial-black sm:[-webkit-text-stroke:2px_#fff] lg:text-[clamp(5rem,8vw,8rem)]">
                         <span className="block">Joseph</span>
                         <span className="block">Emanuel</span>
                     </h2>

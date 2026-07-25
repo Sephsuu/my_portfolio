@@ -39,7 +39,7 @@ export function SkillsSection() {
                         <img
                             src={item.src}
                             alt={item.name}
-                            className={`${item.imgSize} max-h-18 max-w-[80%] object-contain [filter:brightness(0)_saturate(100%)_invert(22%)_sepia(18%)_saturate(1500%)_hue-rotate(335deg)_brightness(90%)_contrast(90%)] sm:max-h-22 lg:max-h-24`}
+                            className={`${item.imgSize} max-h-18 max-w-[80%] object-contain filter-[brightness(0)_saturate(100%)_invert(22%)_sepia(18%)_saturate(1500%)_hue-rotate(335deg)_brightness(90%)_contrast(90%)] sm:max-h-22 lg:max-h-24`}
                         />
                     </div>
                 ))}
