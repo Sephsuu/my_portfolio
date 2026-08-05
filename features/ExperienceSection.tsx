@@ -11,6 +11,7 @@ import { useState } from "react";
 import { Fragment } from "react/jsx-runtime";
 import Image from "next/image";
 import Link from "next/link";
+import { ExternalLink } from "lucide-react";
 import type { ProjectSummary } from "@/types/project";
 
 const fetchProjects = () => fetchJsonData<ProjectSummary[]>("projects.json");
@@ -97,28 +98,51 @@ export function ExperienceSection() {
                                 <span className="mr-2 font-bold text-roast">Role:</span>
                                 <span className="text-roast">{item.role}</span>
                             </div>
-                            {item.detailPath ? (
-                                <Button
-                                    asChild
-                                    className="bg-roast mt-4 rounded-none text-base hover:border hover:border-black hover:bg-slate-50 hover:text-black sm:text-lg"
-                                >
-                                    <Link href={`/projects/${item.id}`}>View More</Link>
-                                </Button>
-                            ) : (
-                                <HoverCard>
-                                    <HoverCardTrigger asChild>
+                            <div
+                                className={`mt-4 flex flex-wrap gap-3 ${
+                                    i % 2 !== 0 ? "lg:justify-end" : ""
+                                }`}
+                            >
+                                {item.detailPath ? (
                                     <Button
-                                        className="bg-roast mt-4 rounded-none text-base hover:border hover:border-black hover:bg-slate-50 hover:text-black sm:text-lg"
-                                        disabled
+                                        asChild
+                                        className="bg-roast rounded-none text-base hover:border hover:border-black hover:bg-slate-50 hover:text-black sm:text-lg"
                                     >
-                                        View More
+                                        <Link href={`/projects/${item.id}`}>View More</Link>
                                     </Button>
-                                    </HoverCardTrigger>
-                                    <HoverCardContent>
-                                        This project case study is coming soon.
-                                    </HoverCardContent>
-                                </HoverCard>
-                            )}
+                                ) : (
+                                    <HoverCard>
+                                        <HoverCardTrigger asChild>
+                                            <Button
+                                                className="bg-roast rounded-none text-base hover:border hover:border-black hover:bg-slate-50 hover:text-black sm:text-lg"
+                                                disabled
+                                            >
+                                                View More
+                                            </Button>
+                                        </HoverCardTrigger>
+                                        <HoverCardContent>
+                                            This project case study is coming soon.
+                                        </HoverCardContent>
+                                    </HoverCard>
+                                )}
+
+                                {item.liveUrl && (
+                                    <Button
+                                        asChild
+                                        variant="outline"
+                                        className="rounded-none border-roast bg-transparent text-base text-roast hover:bg-roast hover:text-white sm:text-lg"
+                                    >
+                                        <a
+                                            href={item.liveUrl}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                        >
+                                            Live App
+                                            <ExternalLink aria-hidden="true" />
+                                        </a>
+                                    </Button>
+                                )}
+                            </div>
                         </div>
                     </article>
                 ))}

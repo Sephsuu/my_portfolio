@@ -8,7 +8,7 @@
     "isMockData": true,
     "overview": {
         "challenge": "Krispy Papi needed a single workspace where different operational roles could manage branch data, monitor stock movement, review financial activity, and maintain accountability without exposing tools outside each user's responsibilities.",
-        "solution": "I developed a responsive, role-aware administration experience that organizes complex workflows into focused modules. Reusable tables, filters, summary cards, charts, status indicators, and detailed transaction views make large operational datasets easier to scan and act on."
+        "solution": "We developed a responsive, role-aware administration experience that organizes complex workflows into focused modules. Reusable tables, filters, summary cards, charts, status indicators, and detailed transaction views make large operational datasets easier to scan and act on."
     },
     "contributors": [
         {

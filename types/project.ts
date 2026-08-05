@@ -8,6 +8,7 @@ export type ProjectSummary = {
     projectType: string
     detailPath?: string;
     isMockData: boolean
+    liveUrl?: string;
 };
 
 export type ProjectModule = {

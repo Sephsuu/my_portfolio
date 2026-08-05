@@ -89,20 +89,27 @@
     },
     {
         "id": "JEB06",
-        "title": "DigiCog: A Community Hub for Game Showcasing",
-        "description": "DigiCog is a web-based community platform that enables users to upload and showcase digital games, manage profiles, interact with the community, and explore game projects through a centralized showcase system.",
+        "title": "DigiCog: Gaming Storefront and Community Hub",
+        "description": "A full-stack gaming platform that combines game discovery and purchasing workflows with profiles, community posts, friendships, and private messaging in one responsive experience.",
         "technologies": [
+            "Laravel",
+            "PHP",
+            "Blade",
+            "Bootstrap",
             "HTML",
             "CSS",
             "JavaScript",
             "jQuery",
-            "Laravel",
             "MySQL"
         ],
         "images": [
-            "digicog/digicog_1.png"
+            "digicog/digicog_home_1.png"
         ],
-        "role": "Full Stack Developer"
+        "role": "Solo Full Stack Developer",
+        "projectType": "Full Stack Web Application",
+        "isMockData": false,
+        "detailPath": "projects/JEB06.json",
+        "liveUrl": "https://digicog.free.nf"
     },
     {
         "id": "JEB07",

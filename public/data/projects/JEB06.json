@@ -1,0 +1,135 @@
+{
+    "id": "JEB06",
+    "title": "DigiCog: Gaming Storefront and Community Hub",
+    "subtitle": "A full-stack destination for discovering, purchasing, and discussing games",
+    "description": "DigiCog brings a responsive gaming storefront and a social community into one Laravel application. Users can discover and filter games, manage purchases from cart to personal library, maintain an account, publish and interact with posts, connect with friends, and exchange private messages.",
+    "role": "Solo Full Stack Developer",
+    "projectType": "Full Stack Web Application",
+    "isMockData": false,
+    "liveUrl": "https://digicog.free.nf",
+    "overview": {
+        "challenge": "The application needed to unite two substantial product areas—a transactional game store and an interactive social network—without making either experience feel disconnected. It also required secure account access, responsive interfaces, and reliable data relationships across games, carts, orders, libraries, posts, reactions, friendships, and conversations.",
+        "solution": "I independently designed and developed a Laravel and MySQL application with responsive Blade interfaces and a structured MVC backend. Shared navigation and visual patterns connect the storefront and community, while authenticated routes, validated requests, Eloquent models, and purpose-built controllers support the complete commerce and social workflows."
+    },
+    "contributors": [
+        {
+            "id": "full-stack",
+            "tabLabel": "Solo Full Stack Dev",
+            "name": "Joseph Bataller",
+            "role": "Solo Full Stack Developer",
+            "image": "/images/sephsuu_black_robe.png",
+            "imageAlt": "Joseph Bataller wearing a black graduation robe",
+            "focusAreas": [
+                "Frontend experience",
+                "Backend systems"
+            ],
+            "contributions": [
+                "Built a responsive gaming storefront and landing experience with prominent discovery paths, promotional content, adaptive navigation, and reusable visual sections.",
+                "Created game search, category, genre, and release-year filtering interfaces alongside reusable product cards and detailed game views.",
+                "Designed the complete commerce interface for cart management, checkout, order review, confirmation, and the user's personal game library.",
+                "Developed registration, login, email-verification, and password-recovery screens with clear account-access flows and validation feedback.",
+                "Built community feeds and profiles where users can create, update, and remove posts and engage through likes, comments, and content search.",
+                "Created responsive friend-management and direct-messaging interfaces with request states, conversation history, and message composition.",
+                "Implemented Laravel authentication, verified-account protection, email verification, password recovery, and guarded routes for account-specific features.",
+                "Developed backend catalog queries for name search and category, genre, and release-year filtering, together with game-detail retrieval.",
+                "Built cart, checkout, order-confirmation, and library logic that moves a user's selected games through a complete purchase lifecycle.",
+                "Designed Eloquent models and MySQL migrations for users, games, carts, orders, libraries, posts, comments, likes, friendships, requests, and messages.",
+                "Implemented community business logic for posts, reactions, comments, user profiles, and cross-user content and people search.",
+                "Developed friend-request acceptance and removal workflows plus private message storage, retrieval, and conversation handling."
+            ]
+        }
+    ],
+    "technologies": [
+        "Laravel",
+        "PHP",
+        "Blade",
+        "Bootstrap",
+        "HTML",
+        "CSS",
+        "JavaScript",
+        "jQuery",
+        "MySQL"
+    ],
+    "highlights": [
+        "Responsive game discovery and storefront experience",
+        "Search and multi-criteria catalog filtering",
+        "Cart-to-library commerce workflow",
+        "Verified authentication and account recovery",
+        "Posts, likes, comments, profiles, and community search",
+        "Friend requests and private direct messaging"
+    ],
+    "images": [
+        "digicog/digicog_home_2.png"
+    ],
+    "modules": [
+        {
+            "id": "storefront",
+            "title": "Storefront and Discovery",
+            "description": "A responsive public-facing experience that introduces DigiCog, highlights available titles, surfaces gaming content, organizes genres, and guides visitors toward the store and community.",
+            "features": [
+                "Responsive landing page and navigation",
+                "Animated game showcase",
+                "Game news and promotional sections",
+                "Genre-based discovery",
+                "Store and community calls to action"
+            ],
+            "images": [
+                "digicog/digicog_home_1.png",
+                "digicog/digicog_home_2.png",
+                "digicog/digicog_home_3.png",
+                "digicog/digicog_home_4.png",
+                "digicog/digicog_home_5.png"
+            ]
+        },
+        {
+            "id": "authentication",
+            "title": "Authentication and Account Access",
+            "description": "Account flows that give users secure access to personalized commerce and community features, supported by Laravel authentication and verified-user routing.",
+            "features": [
+                "User registration and login",
+                "Email verification",
+                "Password recovery",
+                "Validated account forms",
+                "Protected user routes"
+            ],
+            "images": [
+                "digicog/digicog_auth_1.png",
+                "digicog/digicog_auth_2.png"
+            ]
+        },
+        {
+            "id": "commerce",
+            "title": "Game Catalog and Commerce",
+            "description": "An end-to-end shopping flow where players can search and filter a structured game catalog, inspect product details, manage a cart, confirm orders, and access purchased titles from their library.",
+            "features": [
+                "Game search and catalog filtering",
+                "Category, genre, and release-year discovery",
+                "Detailed game information",
+                "Cart and checkout management",
+                "Order confirmation and personal library"
+            ],
+            "images": [
+                "digicog/digicog_shop_1.png",
+                "digicog/digicog_shop_2.png",
+                "digicog/digicog_shop_3.png"
+            ]
+        },
+        {
+            "id": "community",
+            "title": "Community and Messaging",
+            "description": "A connected social space where players can share posts, interact with content, manage their profiles and friendships, find people or discussions, and continue conversations through direct messages.",
+            "features": [
+                "Community feed and content search",
+                "Post creation, editing, and deletion",
+                "Likes and comments",
+                "Profiles and friend requests",
+                "Private direct messaging"
+            ],
+            "images": [
+                "digicog/digicog_community_1.png",
+                "digicog/digicog_community_2.png",
+                "digicog/digicog_community_3.png"
+            ]
+        }
+    ]
+}
