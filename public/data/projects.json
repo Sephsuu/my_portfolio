@@ -1,0 +1,163 @@
+[
+    {
+        "id": "JEB01",
+        "title": "Krispy Papi ERP System",
+        "description": "Papiverse is a secure back-office management platform for Krispy Papi. It centralizes branch operations, inventory and supply orders, raw-material tracking, expenses, payments, commissions, settlements, and sales reporting. With role-based access, transaction logs, approval workflows, and real-time updates.",
+        "technologies": [
+            "Tailwind CSS",
+            "shadcn/ui",
+            "Next.js",
+            "Spring Boot",
+            "PostgreSQL",
+            "Supabase",
+            "TanStack"
+        ],
+        "images": [
+            "kp/kp_0.png"
+        ],
+        "role": "Frontend Developer",
+        "detailPath": "projects/JEB01.json"
+    },
+    {
+        "id": "JEB02",
+        "title": "Papiverse: Franchise Management System for Krispy Papi",
+        "description": "A franchise management system designed for Krispy Papi to monitor sales, inventory, supply orders, and branch performance across multiple franchise locations.",
+        "technologies": [
+            "Tailwind CSS",
+            "shadcn/ui",
+            "Next.js",
+            "Spring Boot",
+            "Django",
+            "PostgreSQL",
+            "Supabase"
+        ],
+        "images": [
+            "papiverse/papiverse_2.png",
+            "papiverse/papiverse_1.png"
+        ],
+        "role": "Full Stack Developer"
+    },
+    {
+        "id": "JEB03",
+        "title": "CvSU Faculty Connect: A Information Management System for CvSU Faculty",
+        "description": "A website that acts as a centralized hub for faculty members where member can post announcements and events as well as manage budget and allocations of CvSU campuses.",
+        "technologies": [
+            "Tailwind CSS",
+            "shadcn/ui",
+            "Next.js",
+            "Laravel",
+            "MySQL",
+            "Supabase"
+        ],
+        "images": [
+            "cvsufc/cvsufc_3.png",
+            "cvsufc/cvsufc_1.png"
+        ],
+        "role": "Frontend Developer"
+    },
+    {
+        "id": "JEB04",
+        "title": "PESO Mendez Employment Website",
+        "description": "A web-based employment portal developed for PESO Mendez to connect job seekers and employers through job postings, applications, and applicant management.",
+        "technologies": [
+            "Tailwind CSS",
+            "shadcn/ui",
+            "Next.js",
+            "Express JS",
+            "MySQL"
+        ],
+        "images": [
+            "pesoweb/pesoweb_10.png"
+        ],
+        "role": "Full Stack Developer"
+    },
+    {
+        "id": "JEB05",
+        "title": "PESO Mendez Employment Mobile App",
+        "description": "A mobile application employment portal developed for PESO Mendez to connect job seekers and employers through job postings, applications, and applicant management.",
+        "technologies": [
+            "Tailwind CSS",
+            "shadcn/ui",
+            "Next.js",
+            "Express JS",
+            "MySQL"
+        ],
+        "images": [
+            "pesomobile/pesomobile_0.png"
+        ],
+        "role": "Full Stack Developer"
+    },
+    {
+        "id": "JEB06",
+        "title": "DigiCog: A Community Hub for Game Showcasing",
+        "description": "DigiCog is a web-based community platform that enables users to upload and showcase digital games, manage profiles, interact with the community, and explore game projects through a centralized showcase system.",
+        "technologies": [
+            "HTML",
+            "CSS",
+            "JavaScript",
+            "jQuery",
+            "Laravel",
+            "MySQL"
+        ],
+        "images": [
+            "digicog/digicog_1.png"
+        ],
+        "role": "Full Stack Developer"
+    },
+    {
+        "id": "JEB07",
+        "title": "Braille Calculator",
+        "description": "A web-based application that visually presents and simulates braille characters to demonstrate how numbers and symbols are represented in braille format.",
+        "technologies": [
+            "Vite React"
+        ],
+        "images": [
+            "hcicalc/hcicalc_1.png"
+        ],
+        "role": "Developer"
+    },
+    {
+        "id": "JEB08",
+        "title": "ELITS Website",
+        "description": "An organization website for ELITS CvSU Main Campus that showcases events, news, membership information, merchandise, and the organization’s profile.",
+        "technologies": [
+            "HTML",
+            "CSS",
+            "JavaScript",
+            "Django",
+            "SQLite"
+        ],
+        "images": [
+            "elits/elits_1.png"
+        ],
+        "role": "Full Stack Developer"
+    },
+    {
+        "id": "JEB09",
+        "title": "Calzada: An Ecommerce Website",
+        "description": "An ecommerce website that showcase products and simulate adding to cart and purchasing order just like in any online shop websites.",
+        "technologies": [
+            "HTML",
+            "CSS",
+            "JavaScript",
+            "Django"
+        ],
+        "images": [
+            "calzada/calzada_1.png"
+        ],
+        "role": "Full Stack Developer"
+    },
+    {
+        "id": "JEB10",
+        "title": "Tkinter Baking System",
+        "description": "A desktop-based ATM simulation built with Tkinter that allows deposit, withdraw, and check account balances through a GUI.",
+        "technologies": [
+            "Python",
+            "Tkinter"
+        ],
+        "images": [
+            "bank/bank_0.png"
+        ],
+        "role": "Developer"
+    }
+]

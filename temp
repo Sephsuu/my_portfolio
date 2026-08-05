@@ -1,0 +1,74 @@
+Papiverse — Project Modules
+Papiverse is a secure operations and financial management platform built for Krispy Papi. For a portfolio, the system can be presented through these key modules:
+1. Authentication and Access Control
+Secure user login and session management
+Role-based permissions and protected routes
+User account and credential management
+Unauthorized-access handling
+2. Branch Management
+Internal and external branch records
+Branch addresses, delivery fees, and operational details
+Purchase-order monitoring
+Branch payment reports
+Branch profitability rankings
+3. Inventory Management
+Supply and raw-material inventory
+Stock level monitoring
+Inventory adjustments and movement history
+Branch-level inventory visibility
+4. Supply Order Management
+Supply-order creation and processing
+Multi-stage approval workflow
+Order status and payment tracking
+Detailed purchase-order reports
+5. Product Catalog
+Centralized supply catalog
+Raw-material management
+Product pricing and availability records
+Reusable product data across inventory and orders
+6. Finance and Expense Management
+Business expense recording
+Finance account monitoring
+Supply and raw-material cost breakdowns
+Meat purchase-order management
+Financial data organized by responsible account or owner
+7. Reports and Analytics
+Weekly sales reports
+Commission reports
+Settlement reports
+Supply and raw-material reports
+Branch profit rankings and performance comparisons
+8. Payment and Settlement Tracking
+Branch payment monitoring
+Supply-order payment records
+Settlement history
+Outstanding-balance tracking
+9. Audit Logs
+Supply and raw-material activity logs
+Inventory input and order histories
+Transaction-level audit trails
+Improved accountability and traceability
+10. Administration
+User management
+Roles and authority configuration
+Permission-based navigation
+Administrative control over system access
+11. Account Management
+Personal and branch information
+Profile editing
+Credential updates
+Account details and assigned responsibilities
+12. Real-Time Notifications
+Live operational updates
+Order and approval notifications
+WebSocket-based event delivery
+User feedback through alerts and status messages
+Technology Stack
+Next.js 16 and React 19
+TypeScript
+Tailwind CSS and shadcn/ui
+TanStack Query for server-state management
+STOMP, SockJS, and WebSockets for real-time updates
+Recharts for data visualization
+REST API integration
+Responsive, role-based user interface

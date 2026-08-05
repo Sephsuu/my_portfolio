@@ -1,15 +1,28 @@
 "use client"
 
 import { Button } from "@/components/ui/button";
+import { Loader } from "@/components/custom/Loader";
 import { SectionReveal } from "@/components/custom/SectionReveal";
 import { HoverCard, HoverCardContent, HoverCardTrigger } from "@/components/ui/hover-card";
 import { Separator } from "@/components/ui/separator";
-import { projects } from "@/data/projects";
+import { useFetchData } from "@/hooks/use-fetch-data";
+import { fetchJsonData } from "@/lib/fetch-json-data";
 import { useState } from "react";
 import { Fragment } from "react/jsx-runtime";
+import Image from "next/image";
+import Link from "next/link";
+import type { ProjectSummary } from "@/types/project";
+
+const fetchProjects = () => fetchJsonData<ProjectSummary[]>("projects.json");
 
 export function ExperienceSection() {
     const [projCount, setProjCount] = useState(3);
+    const {
+        data: projects,
+        loading,
+        error: loadError,
+    } = useFetchData<ProjectSummary>(fetchProjects);
+
     return (
         <SectionReveal
             id="experiences"
@@ -19,20 +32,33 @@ export function ExperienceSection() {
                 Hands-on Experience
             </h2>
 
+            {loading && (
+                <Loader label="Loading projects..." />
+            )}
+
+            {loadError && (
+                <p className="text-roast text-center" role="alert">
+                    {loadError}
+                </p>
+            )}
+
             <div className="mx-auto max-w-340 space-y-14 sm:space-y-18 lg:space-y-24">
                 {projects.slice(0, projCount).map((item, i) => (
                     <article
                         className="grid items-center gap-6 lg:grid-cols-2 lg:gap-10 xl:gap-16"
-                        key={item.title}
+                        key={item.id}
                     >
                         <div
                             className={`order-1 min-w-0 ${
                                 i % 2 === 0 ? "lg:order-1" : "lg:order-2"
                             }`}
                         >
-                            <img
+                            <Image
                                 src={`/images/projects/${item.images[0]}`}
                                 alt={`${item.title} project preview`}
+                                width={1200}
+                                height={684}
+                                sizes="(max-width: 1024px) 100vw, 600px"
                                 className="mx-auto h-auto w-full max-w-150 rounded-xl border border-slate-300 object-cover shadow-md"
                             />
                         </div>
@@ -43,9 +69,12 @@ export function ExperienceSection() {
                                     : "lg:order-1 lg:items-end lg:text-right"
                             }`}
                         >
-                            <h3 className="text-roast text-xl font-bold leading-snug hover:underline sm:text-2xl lg:text-3xl">
+                            <Link
+                                href={`/projects/${item.id}`}
+                                className="text-roast text-xl font-bold leading-snug hover:underline sm:text-2xl lg:text-3xl"
+                            >
                                 {item.title}
-                            </h3>
+                            </Link>
                             <Separator className="my-3 bg-slate-300" />
                             <p className="leading-relaxed text-roast/80 sm:text-lg">
                                 {item.description}
@@ -68,19 +97,28 @@ export function ExperienceSection() {
                                 <span className="mr-2 font-bold text-roast">Role:</span>
                                 <span className="text-roast">{item.role}</span>
                             </div>
-                            <HoverCard>
-                                <HoverCardTrigger>
+                            {item.detailPath ? (
+                                <Button
+                                    asChild
+                                    className="bg-roast mt-4 rounded-none text-base hover:border hover:border-black hover:bg-slate-50 hover:text-black sm:text-lg"
+                                >
+                                    <Link href={`/projects/${item.id}`}>View More</Link>
+                                </Button>
+                            ) : (
+                                <HoverCard>
+                                    <HoverCardTrigger asChild>
                                     <Button
                                         className="bg-roast mt-4 rounded-none text-base hover:border hover:border-black hover:bg-slate-50 hover:text-black sm:text-lg"
                                         disabled
                                     >
                                         View More
                                     </Button>
-                                </HoverCardTrigger>
-                                <HoverCardContent>
-                                    Viewing of project is unavailable as of the moment.
-                                </HoverCardContent>
-                            </HoverCard>
+                                    </HoverCardTrigger>
+                                    <HoverCardContent>
+                                        This project case study is coming soon.
+                                    </HoverCardContent>
+                                </HoverCard>
+                            )}
                         </div>
                     </article>
                 ))}

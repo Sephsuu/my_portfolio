@@ -1,0 +1,168 @@
+{
+    "id": "JEB01",
+    "title": "Krispy Papi ERP System",
+    "subtitle": "A centralized back-office platform for multi-branch operations",
+    "description": "Papiverse is a secure ERP and franchise-management platform built for Krispy Papi. It brings access control, inventory, product catalogs, financial reporting, settlements, and operational logs into one responsive workspace for franchisors and branch teams.",
+    "role": "Frontend Developer",
+    "projectType": "Commissioned Project",
+    "isMockData": true,
+    "overview": {
+        "challenge": "Krispy Papi needed a single workspace where different operational roles could manage branch data, monitor stock movement, review financial activity, and maintain accountability without exposing tools outside each user's responsibilities.",
+        "solution": "I developed a responsive, role-aware administration experience that organizes complex workflows into focused modules. Reusable tables, filters, summary cards, charts, status indicators, and detailed transaction views make large operational datasets easier to scan and act on."
+    },
+    "contributors": [
+        {
+            "id": "frontend",
+            "tabLabel": "Frontend Dev",
+            "name": "Joseph Bataller",
+            "role": "Frontend Developer",
+            "image": "/images/sephsuu_black_robe.png",
+            "imageAlt": "Sephsuu wearing a black graduation robe",
+            "focusAreas": [
+                "Interface & experience",
+                "Responsive & reliable"
+            ],
+            "contributions": [
+                "Developed the core administration and CRUD modules for supplies, raw materials, branches, users, expenses, and finance categories, including forms, validation, dialogs, tables, filtering, and pagination.",
+                "Built the end-to-end inventory and supply-order experience with categorized orders, custom items, receipts, shortage warnings, status updates, shipment details, payments, remarks, and PDF exports.",
+                "Created financial dashboards and reporting interfaces for expenses, profit, sales, commissions, settlements, payment methods, and spending patterns using interactive filters and Recharts visualizations.",
+                "Implemented secure, role-based frontend access control with session refresh, request retry handling, permission-aware navigation, protected finance areas, and user role and authority management.",
+                "Established a reusable, responsive UI system with shared controls, modals, filters, date pickers, tables, pagination, badges, summaries, empty states, and adaptive navigation.",
+                "Designed a maintainable TypeScript data architecture using service modules, reusable React Query hooks, centralized cache invalidation, notifications, error handling, authenticated requests, and file downloads."
+            ]
+        },
+        {
+            "id": "backend",
+            "tabLabel": "Backend Dev",
+            "name": "Marlon Mitra",
+            "role": "Backend Developer",
+            "image": "/images/lonsky_black_robe.png",
+            "imageAlt": "Lonsky wearing a black graduation robe",
+            "focusAreas": [
+                "APIs & business logic",
+                "Security & data"
+            ],
+            "contributions": [
+                "Developed Spring Boot REST APIs for user administration, branches, product catalogs, inventory, supply orders, and financial operations.",
+                "Designed the PostgreSQL data model and service-layer workflows that connect branches, stock records, orders, payments, commissions, and settlements.",
+                "Implemented the supply-order lifecycle and inventory movement logic, including stock updates, shortages, shipment details, receipts, and order statuses.",
+                "Built secure authentication and role-based authorization for protected resources and granular operational permissions.",
+                "Implemented finance calculations and reporting data for expenses, sales, profits, payment methods, commissions, and settlement workflows.",
+                "Established backend validation, consistent error responses, transaction handling, and operational audit logs for reliable API integrations."
+            ]
+        }
+    ],
+    "technologies": [
+        "Next.js",
+        "TypeScript",
+        "Tailwind CSS",
+        "shadcn/ui",
+        "TanStack Query",
+        "Spring Boot",
+        "PostgreSQL",
+        "Supabase"
+    ],
+    "highlights": [
+        "Role-based access and authority management",
+        "Supply and raw-material inventory monitoring",
+        "Expense, payment, commission, and settlement reporting",
+        "Searchable operational and transaction audit trails",
+        "Centralized supply and raw-material catalogs"
+    ],
+    "images": [
+        "kp/kp_0.png"
+    ],
+    "modules": [
+        {
+            "id": "access-control",
+            "title": "Access Control",
+            "description": "Administration tools for managing users, assigning operational roles, and controlling feature-level authorities across the platform.",
+            "features": [
+                "User administration",
+                "Role assignment",
+                "Granular authorities",
+                "Role-based filtering and search"
+            ],
+            "images": [
+                "kp/kp_auth_1.png",
+                "kp/kp_auth_2.png",
+                "kp/kp_auth_3.png"
+            ]
+        },
+        {
+            "id": "inventory",
+            "title": "Inventory Management",
+            "description": "Inventory views that help teams monitor supplies and raw materials, identify stock that needs attention, and inspect item-level movement and costs.",
+            "features": [
+                "Supply inventory tracking",
+                "Raw-material inventory tracking",
+                "Minimum-stock indicators",
+                "Inventory cost summaries"
+            ],
+            "images": [
+                "kp/kp_inventory_2.png",
+                "kp/kp_inventory_3.png",
+                "kp/kp_inventory_4.png"
+            ]
+        },
+        {
+            "id": "finance",
+            "title": "Finance and Reporting",
+            "description": "A comprehensive finance workspace for reviewing expenditures, payments, supply costs, weekly sales, commissions, and settlements through summaries and detailed reports.",
+            "features": [
+                "Expense dashboards and category breakdowns",
+                "Payment and settlement tracking",
+                "Weekly sales and commission reporting",
+                "Supply and raw-material cost reports",
+                "Date-based summaries and detailed views"
+            ],
+            "images": [
+                "kp/kp_finance_1.png",
+                "kp/kp_finance_2.png",
+                "kp/kp_finance_3.png",
+                "kp/kp_finance_4.png",
+                "kp/kp_finance_5.png",
+                "kp/kp_finance_6.png",
+                "kp/kp_finance_7.png",
+                "kp/kp_finance_8.png",
+                "kp/kp_finance_9.png",
+                "kp/kp_finance_10.png",
+                "kp/kp_finance_11.png",
+                "kp/kp_finance_12.png",
+                "kp/kp_finance_13.png",
+                "kp/kp_finance_14.png",
+                "kp/kp_finance_15.png"
+            ]
+        },
+        {
+            "id": "activity-logs",
+            "title": "Activity and Transaction Logs",
+            "description": "Searchable audit views that present incoming and outgoing inventory events, transaction context, quantities, timestamps, and branch activity in a traceable timeline.",
+            "features": [
+                "Incoming and outgoing event summaries",
+                "Supply and raw-material logs",
+                "Transaction history",
+                "Date and event-type filtering"
+            ],
+            "images": [
+                "kp/kp_logs_1.png",
+                "kp/kp_logs_2.png"
+            ]
+        },
+        {
+            "id": "catalog",
+            "title": "Product Catalog",
+            "description": "Centralized catalogs for maintaining supplies and raw materials, including measurements, stock requirements, pricing, and unit costs.",
+            "features": [
+                "Supply catalog",
+                "Raw-material catalog",
+                "Measurement conversion",
+                "Pricing and unit-cost management"
+            ],
+            "images": [
+                "kp/kp_catalog_1.png",
+                "kp/kp_catalog_2.png"
+            ]
+        }
+    ]
+}

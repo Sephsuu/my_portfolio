@@ -4,7 +4,7 @@ import { SectionReveal } from "@/components/custom/SectionReveal";
 
 export function ContactSection() {
     return (
-        <SectionReveal
+        <section
             id="contacts"
             className="scroll-mt-20 bg-[#3c2000] px-4 py-14 text-white sm:px-6 sm:py-18 lg:px-8 lg:py-24"
         >
@@ -63,6 +63,6 @@ export function ContactSection() {
                     </div>
                 </address>
             </div>
-        </SectionReveal>
+        </section>
     )
 }

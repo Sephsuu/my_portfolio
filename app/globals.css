@@ -160,6 +160,8 @@ html {
 @theme inline {
   --color-feather: #faf9f6;
   --color-roast: #58382a;
+  --color-dark: #1c1917;
+  --color-darkbrown: #58382a;
 }
 
 @layer base {
