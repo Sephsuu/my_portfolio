@@ -12,8 +12,8 @@
     },
     "contributors": [
         {
-            "id": "full-stack",
-            "tabLabel": "Full Stack Dev",
+            "id": "developer-one",
+            "tabLabel": "Developer 1",
             "name": "Joseph Bataller",
             "role": "Full Stack Developer",
             "image": "/images/sephsuu_black_robe.png",
@@ -52,7 +52,7 @@
         {
             "id": "developer-three",
             "tabLabel": "Developer 3",
-            "name": "Teloy",
+            "name": "Johnny Teloy",
             "role": "Project Developer",
             "image": "/images/teloy_black_robe.png",
             "imageAlt": "Teloy wearing a black graduation robe",
