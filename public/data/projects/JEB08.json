@@ -1,0 +1,64 @@
+{
+    "id": "JEB08",
+    "title": "Braille Calculator",
+    "subtitle": "A visual prototype for an accessible hardware calculator",
+    "description": "A frontend prototype showcasing the design of a hardware calculator with braille markings and voice assistance for visually impaired users.",
+    "role": "Developer",
+    "projectType": "3rd Year Project",
+    "isMockData": false,
+    "liveUrl": "https://hci-talking-calculator.vercel.app",
+    "overview": {
+        "challenge": "The prototype needed to communicate how a physical calculator could make common controls identifiable through braille while providing voice assistance for visually impaired users.",
+        "solution": "I built a frontend-only visual prototype in React, Vite, and Tailwind CSS. It showcases a proposed hardware calculator layout with braille-marked buttons, a display, power control, and voice-volume controls; it does not include a backend or represent a completed hardware product."
+    },
+    "contributors": [
+        {
+            "id": "developer",
+            "tabLabel": "Developer",
+            "name": "Joseph Bataller",
+            "role": "Developer",
+            "image": "/images/sephsuu_black_robe.png",
+            "imageAlt": "Joseph Bataller wearing a black graduation robe",
+            "focusAreas": [
+                "Interface design",
+                "Frontend development"
+            ],
+            "contributions": [
+                "Designed a visual prototype for a hardware calculator intended for visually impaired users.",
+                "Created braille-marked number and operator controls to demonstrate the proposed physical layout.",
+                "Showcased voice assistance through dedicated power and volume controls.",
+                "Built and styled the frontend-only prototype with React, Vite, and Tailwind CSS."
+            ]
+        }
+    ],
+    "technologies": [
+        "React",
+        "Vite",
+        "Tailwind CSS"
+    ],
+    "highlights": [
+        "Prototype of a proposed hardware calculator",
+        "Braille-marked numbers and operators",
+        "Voice assistance with power and volume controls",
+        "Designed for visually impaired users"
+    ],
+    "images": [
+        "hcicalc/hcicalc_1.png"
+    ],
+    "modules": [
+        {
+            "id": "calculator-interface",
+            "title": "Hardware Calculator Prototype",
+            "description": "A frontend visualization of a proposed physical calculator that combines familiar numeric and arithmetic controls with braille markings and voice assistance for visually impaired users.",
+            "features": [
+                "Braille number and operator patterns",
+                "Calculator display",
+                "Power control",
+                "Volume controls"
+            ],
+            "images": [
+                "hcicalc/hcicalc_1.png"
+            ]
+        }
+    ]
+}

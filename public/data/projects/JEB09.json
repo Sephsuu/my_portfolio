@@ -1,0 +1,104 @@
+{
+    "id": "JEB09",
+    "title": "ELITS Website: WEBFEST Winning Entry",
+    "subtitle": "A winning static website for a CvSU student organization",
+    "description": "The ELITS website was created for WEBFEST, a school competition that challenged participants to design and develop a static website for a student organization. Our entry represented the Elite League of Information Technology Students at CvSU Main Campus and won the competition.",
+    "role": "Frontend Developer",
+    "projectType": "WEBFEST Competition Winner",
+    "isMockData": false,
+    "liveUrl": "https://sephsuu.github.io/ELITS/",
+    "overview": {
+        "challenge": "WEBFEST tasked participants with creating a static website that could clearly represent a student organization, communicate its identity, and organize its information into an engaging browsing experience without using a backend.",
+        "solution": "We created a multi-page static website for ELITS using HTML, CSS, JavaScript, and Bootstrap. The design applies the organization's orange-and-dark visual identity across a promotional homepage, membership showcase, and organization profile. The completed entry won the WEBFEST competition."
+    },
+    "contributors": [
+        {
+            "id": "frontend",
+            "tabLabel": "Frontend Dev",
+            "name": "Joseph Bataller",
+            "role": "Frontend Developer",
+            "image": "/images/sephsuu_black_robe.png",
+            "imageAlt": "Joseph Bataller wearing a black graduation robe",
+            "focusAreas": [
+                "Visual experience",
+                "Static development"
+            ],
+            "contributions": [
+                "Helped translate the ELITS identity into a consistent orange, dark, and white visual direction for the competition entry.",
+                "Built static page layouts and navigation using HTML, CSS, JavaScript, and Bootstrap.",
+                "Developed the homepage presentation with organization messaging, calls to action, and content discovery sections.",
+                "Created the static membership showcase for presenting available packages, inclusions, and organization merchandise.",
+                "Developed the organization profile experience to introduce ELITS and present its officers and identity.",
+                "Refined the entry's visual hierarchy, spacing, reusable styling, and cross-page consistency for the final WEBFEST presentation."
+            ]
+        }
+    ],
+    "technologies": [
+        "HTML",
+        "CSS",
+        "JavaScript",
+        "Bootstrap"
+    ],
+    "highlights": [
+        "Winning WEBFEST competition entry",
+        "Static frontend-only implementation",
+        "ELITS-branded visual design",
+        "Organization and membership presentation",
+        "Multi-page student organization experience"
+    ],
+    "images": [
+        "elits/elits_home_1.png"
+    ],
+    "modules": [
+        {
+            "id": "organization-homepage",
+            "title": "Organization Homepage",
+            "description": "A branded landing experience that introduces ELITS, promotes membership, and gives visitors clear paths to explore the student organization and its content.",
+            "features": [
+                "Branded hero presentation",
+                "Static content discovery",
+                "Membership calls to action",
+                "Consistent site navigation"
+            ],
+            "images": [
+                "elits/elits_home_1.png",
+                "elits/elits_home_2.png",
+                "elits/elits_home_3.png",
+                "elits/elits_home_4.png",
+                "elits/elits_home_5.png",
+                "elits/elits_home_6.png"
+            ]
+        },
+        {
+            "id": "membership-showcase",
+            "title": "Membership Showcase",
+            "description": "A static promotional page that presents ELITS membership options, benefits, package inclusions, and merchandise through visually distinct sections.",
+            "features": [
+                "Membership package presentation",
+                "Benefits and inclusions",
+                "Organization merchandise",
+                "Prominent calls to action"
+            ],
+            "images": [
+                "elits/elits_shop_1.png",
+                "elits/elits_shop_2.png",
+                "elits/elits_shop_3.png"
+            ]
+        },
+        {
+            "id": "organization-profile",
+            "title": "Who We Are",
+            "description": "An organization profile that communicates the purpose of ELITS and introduces the people representing the student organization.",
+            "features": [
+                "Organization overview",
+                "ELITS identity and purpose",
+                "Officer presentation",
+                "Consistent competition branding"
+            ],
+            "images": [
+                "elits/elits_whoarewe_1.png",
+                "elits/elits_whoarewe_2.png"
+            ]
+        }
+    ]
+}

@@ -22,6 +22,9 @@ export function ContributionShowcase({ contributors }: ContributionShowcaseProps
         contributor.contributions.slice(0, midpoint),
         contributor.contributions.slice(midpoint),
     ];
+    const sideContributors = contributors.filter(
+        (item) => item.id !== contributor.id,
+    );
 
     return (
         <section id="developers" className="relative isolate scroll-mt-0 overflow-hidden bg-[#281710] px-4 text-[#f7eadc] sm:px-6 lg:px-8">
@@ -61,19 +64,69 @@ export function ContributionShowcase({ contributors }: ContributionShowcaseProps
                         ))}
                     </div>
 
-                    <div className="relative z-10 order-3 mx-auto flex h-160 w-full max-w-130 items-end justify-center self-end sm:h-185 lg:order-2 lg:h-205">
-                        <Image
-                            key={contributor.image}
-                            src={contributor.image}
-                            alt={contributor.imageAlt}
-                            width={1600}
-                            height={2400}
-                            sizes="(max-width: 640px) 90vw, (max-width: 1024px) 420px, 520px"
-                            className={cn(
-                                "h-full w-auto max-w-none object-contain object-bottom drop-shadow-[0_18px_35px_rgba(0,0,0,0.28)]",
-                                contributor.id === "backend" && "-mb-20"
-                            )}
-                        />
+                    <div
+                        className={cn(
+                            "relative z-10 order-3 mx-auto flex h-160 w-full items-end justify-center self-end sm:h-185 lg:order-2 lg:h-205",
+                            contributors.length === 3
+                                ? "-mt-50! h-180 max-w-190 sm:h-205 lg:h-230 lg:w-[165%] lg:max-w-none lg:-translate-x-[19.5%]"
+                                : "max-w-130",
+                        )}
+                    >
+                        {contributors.length === 3 ? (
+                            [sideContributors[0], contributor, sideContributors[1]].map(
+                                (item, index) => {
+                                    const isActive = item.id === contributor.id;
+
+                                    return (
+                                        <button
+                                            key={item.id}
+                                            type="button"
+                                            aria-label={
+                                                isActive
+                                                    ? `${item.name}, selected contributor`
+                                                    : `Show ${item.name}'s contributions`
+                                            }
+                                            aria-pressed={isActive}
+                                            onClick={() => setActiveId(item.id)}
+                                            className={cn(
+                                                "absolute bottom-0 flex origin-bottom items-end justify-center rounded-t-full transition-[opacity,transform,filter] duration-500 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#f7eadc] focus-visible:ring-offset-4 focus-visible:ring-offset-[#281710] motion-reduce:transition-none",
+                                                isActive
+                                                    ? "left-1/2 z-20 h-full w-[68%] -translate-x-1/2 cursor-default opacity-100"
+                                                    : "z-10 h-[84%] w-[48%] cursor-pointer opacity-35 grayscale-[35%] hover:opacity-65 hover:grayscale-0",
+                                                !isActive && index === 0 && "left-[-10%] hover:-translate-x-1",
+                                                !isActive && index === 2 && "right-[-10%] hover:translate-x-1",
+                                            )}
+                                        >
+                                            <Image
+                                                src={item.image}
+                                                alt={item.imageAlt}
+                                                width={1600}
+                                                height={2400}
+                                                sizes="(max-width: 640px) 60vw, (max-width: 1024px) 320px, 420px"
+                                                className={cn(
+                                                    "h-full w-full scale-125 object-contain object-bottom drop-shadow-[0_18px_35px_rgba(0,0,0,0.28)]",
+                                                    item.image.includes("lonsky") && "-mb-11 scale-115",
+                                                    item.image.includes("sephsuu") && "mb-4 scale-115",
+                                                )}
+                                            />
+                                        </button>
+                                    );
+                                },
+                            )
+                        ) : (
+                            <Image
+                                key={contributor.image}
+                                src={contributor.image}
+                                alt={contributor.imageAlt}
+                                width={1600}
+                                height={2400}
+                                sizes="(max-width: 640px) 90vw, (max-width: 1024px) 420px, 520px"
+                                className={cn(
+                                    "h-full w-auto max-w-none scale-[1.15] object-contain object-bottom drop-shadow-[0_18px_35px_rgba(0,0,0,0.28)]",
+                                    contributor.image.includes("lonsky") && "-mb-22",
+                                )}
+                            />
+                        )}
                     </div>
 
                     <div className="relative z-20 order-2 space-y-8 lg:order-3 lg:pb-24">

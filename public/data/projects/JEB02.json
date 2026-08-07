@@ -1,0 +1,172 @@
+{
+    "id": "JEB02",
+    "title": "CvSU Alumni Connect: A Web-Based Alumni Tracer and Engagement System",
+    "subtitle": "Alumni information management, graduate tracing, and institutional decision support in one platform",
+    "description": "CvSU Alumni Connect is a centralized web platform for maintaining accurate graduate records, conducting adaptable tracer studies, analyzing alumni outcomes, supporting institutional reporting, and strengthening communication between Cavite State University and its graduates.",
+    "role": "Full Stack Developer",
+    "projectType": "On-the-Job Training Project",
+    "isMockData": true,
+    "overview": {
+        "challenge": "Cavite State University needed a dependable way to replace fragmented or outdated alumni records, monitor employment and educational outcomes, and conduct tracer studies at institutional scale. The platform had to support adaptable questionnaires, convert individual responses into useful evidence, keep graduates engaged, and enforce different responsibilities for alumni, administrators, and super administrators.",
+        "solution": "Our three-developer team built a centralized, role-aware platform for alumni verification, self-managed profiles, employment and education histories, dynamic tracer questionnaires, response analytics, filtered exports, and university events. It gives alumni direct control over their current information while enabling authorized personnel to organize records, analyze trends, and prepare evidence for accreditation, academic planning, curriculum evaluation, and other institutional requirements."
+    },
+    "contributors": [
+        {
+            "id": "full-stack",
+            "tabLabel": "Full Stack Dev",
+            "name": "Joseph Bataller",
+            "role": "Full Stack Developer",
+            "image": "/images/sephsuu_black_robe.png",
+            "imageAlt": "Joseph Bataller wearing a black graduation robe",
+            "focusAreas": [
+                "Tracer & engagement",
+                "Forms API & reliability"
+            ],
+            "contributions": [
+                "Developed the alumni tracer questionnaire system with dynamic questions covering employment, educational background, advanced studies, and career outcomes, including conditional questions driven by previous responses.",
+                "Implemented data analytics and reporting through dashboards, charts, tables, filters, and exports that help administrators interpret survey responses for institutional reporting and academic planning.",
+                "Built the events and alumni engagement module for creating, updating, publishing, and viewing university activities that keep graduates informed and connected.",
+                "Developed the NestJS and MongoDB form-management API for creating, updating, filtering, activating, pinning, soft-deleting, and permanently deleting forms and their sections.",
+                "Implemented CRUD and bulk creation for dynamic questionnaire fields, including matrix and table fields, conditional visibility and requirements, unique keys, validation, ordering, and deletion handling.",
+                "Integrated form workflows with user, college, and department services, added external-request timeout and error handling, and wrote unit tests for form lifecycles, fields, filters, counts, and cascading deletion."
+            ]
+        },
+        {
+            "id": "developer-two",
+            "tabLabel": "Developer 2",
+            "name": "Marlon Mitra",
+            "role": "Project Developer",
+            "image": "/images/lonsky_black_robe.png",
+            "imageAlt": "Marlon Mitra wearing a black graduation robe",
+            "focusAreas": [
+                "Contribution details",
+                "Coming soon"
+            ],
+            "contributions": [
+                "Temporary placeholder: primary project responsibility will be added.",
+                "Temporary placeholder: frontend or backend feature contributions will be added.",
+                "Temporary placeholder: system integration contributions will be added.",
+                "Temporary placeholder: testing and reliability contributions will be added."
+            ]
+        },
+        {
+            "id": "developer-three",
+            "tabLabel": "Developer 3",
+            "name": "Teloy",
+            "role": "Project Developer",
+            "image": "/images/teloy_black_robe.png",
+            "imageAlt": "Teloy wearing a black graduation robe",
+            "focusAreas": [
+                "Contribution details",
+                "Coming soon"
+            ],
+            "contributions": [
+                "Temporary placeholder: primary project responsibility will be added.",
+                "Temporary placeholder: frontend or backend feature contributions will be added.",
+                "Temporary placeholder: system integration contributions will be added.",
+                "Temporary placeholder: testing and reliability contributions will be added."
+            ]
+        }
+    ],
+    "technologies": [
+        "Next.js",
+        "TypeScript",
+        "Tailwind CSS",
+        "shadcn/ui",
+        "Spring Boot",
+        "NestJS",
+        "PostgreSQL",
+        "MongoDB",
+        "Supabase"
+    ],
+    "highlights": [
+        "Self-managed alumni profiles and verification",
+        "Dynamic, conditional graduate tracer questionnaires",
+        "Employment, career progression, and further-study records",
+        "Role-based alumni, administrator, and super-administrator access",
+        "Analytics and exports for accreditation and academic planning",
+        "University events and continued alumni engagement"
+    ],
+    "images": [
+        "alumnitracer/tracer_auth_1.png"
+    ],
+    "modules": [
+        {
+            "id": "authentication-administration",
+            "title": "Authentication and Administration",
+            "description": "Authentication, verification, protected pages, and permission-aware administration separate the responsibilities of alumni, administrators, and super administrators across university organizational units.",
+            "features": [
+                "Alumni registration and verification",
+                "Role-based protected pages and permission checks",
+                "Administrator and super-administrator access",
+                "User, college, and department oversight"
+            ],
+            "images": [
+                "alumnitracer/tracer_auth_1.png",
+                "alumnitracer/tracer_auth_2.png",
+                "alumnitracer/tracer_auth_3.png",
+                "alumnitracer/tracer_auth_4.png",
+                "alumnitracer/tracer_auth_5.png",
+                "alumnitracer/tracer_admin_users_1.png",
+                "alumnitracer/tracer_admin_users_2.png",
+                "alumnitracer/tracer_admin_users_3.png",
+                "alumnitracer/tracer_admin_colleges_1.png",
+                "alumnitracer/tracer_admin_colleges_2.png"
+            ]
+        },
+        {
+            "id": "alumni-profile",
+            "title": "Alumni Profile and Records",
+            "description": "A self-service account where graduates maintain their personal details, educational background, employment history, advanced studies, and other information about their professional journey after graduation.",
+            "features": [
+                "Personal and contact information",
+                "Educational background and advanced studies",
+                "Employment history and career progression",
+                "Direct alumni record updates"
+            ],
+            "images": [
+                "alumnitracer/tracer_alumni_account_1.png",
+                "alumnitracer/tracer_alumni_account_2.png"
+            ]
+        },
+        {
+            "id": "tracer-questionnaires",
+            "title": "Tracer Questionnaires and Analytics",
+            "description": "A flexible tracer-study workspace for collecting employment status, job relevance, career progression, further education, and graduate experiences. Conditional fields adapt questionnaires to previous answers, while analytics turn submitted responses into institutional insights.",
+            "features": [
+                "Multiple question and field types",
+                "Conditional visibility and requirements",
+                "Editable alumni submissions",
+                "Charts, indicators, filters, and report exports"
+            ],
+            "images": [
+                "alumnitracer/tracer_admin_forms_1.png",
+                "alumnitracer/tracer_admin_forms_2.png",
+                "alumnitracer/tracer_admin_forms_3.png",
+                "alumnitracer/tracer_admin_forms_4.png",
+                "alumnitracer/tracer_admin_forms_5.png",
+                "alumnitracer/tracer_admin_forms_6.png",
+                "alumnitracer/tracer_alumni_forms_1.png",
+                "alumnitracer/tracer_alumni_forms_2.png"
+            ]
+        },
+        {
+            "id": "alumni-events",
+            "title": "Events and Alumni Engagement",
+            "description": "University event workflows extend the platform beyond record management by helping authorized personnel publish activities, announcements, and opportunities that keep graduates connected with the institution.",
+            "features": [
+                "Event creation and editing",
+                "Publishing and visibility management",
+                "Alumni-facing event listings",
+                "University activity details"
+            ],
+            "images": [
+                "alumnitracer/tracer_admin_events_1.png",
+                "alumnitracer/tracer_admin_events_2.png",
+                "alumnitracer/tracer_admin_events_3.png",
+                "alumnitracer/tracer_alumni_events_1.png",
+                "alumnitracer/tracer_alumni_events_2.png"
+            ]
+        }
+    ]
+}

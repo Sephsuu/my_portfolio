@@ -20,6 +20,28 @@
     },
     {
         "id": "JEB02",
+        "title": "CvSU Alumni Connect: A Web-Based Alumni Tracer and Engagement System",
+        "description": "A centralized alumni tracer and engagement platform that helps Cavite State University maintain graduate records, administer adaptive questionnaires, analyze outcomes, prepare institutional reports, and keep alumni connected through university events.",
+        "technologies": [
+            "Tailwind CSS",
+            "shadcn/ui",
+            "Next.js",
+            "Spring Boot",
+            "NestJS",
+            "PostgreSQL",
+            "MongoDB",
+            "Supabase"
+        ],
+        "images": [
+            "alumnitracer/tracer_auth_1.png"
+        ],
+        "role": "Full Stack Developer",
+        "projectType": "On-the-Job Training Project",
+        "isMockData": true,
+        "detailPath": "projects/JEB02.json"
+    },
+    {
+        "id": "JEB03",
         "title": "Papiverse: Franchise Management System for Krispy Papi",
         "description": "A franchise management system designed for Krispy Papi to monitor sales, inventory, supply orders, and branch performance across multiple franchise locations.",
         "technologies": [
@@ -38,25 +60,28 @@
         "role": "Full Stack Developer"
     },
     {
-        "id": "JEB03",
-        "title": "CvSU Faculty Connect: A Information Management System for CvSU Faculty",
-        "description": "A website that acts as a centralized hub for faculty members where member can post announcements and events as well as manage budget and allocations of CvSU campuses.",
+        "id": "JEB04",
+        "title": "CvSU Faculty Connect: An Information Management System for CvSU Faculty",
+        "description": "A commissioned capstone project that provides CvSU faculty with a centralized platform for announcements, events, personnel, accomplishments, financial records, and real-time communication.",
         "technologies": [
+            "Next.js",
+            "TypeScript",
             "Tailwind CSS",
             "shadcn/ui",
-            "Next.js",
             "Laravel",
             "MySQL",
             "Supabase"
         ],
         "images": [
-            "cvsufc/cvsufc_3.png",
             "cvsufc/cvsufc_1.png"
         ],
-        "role": "Frontend Developer"
+        "role": "Frontend Developer",
+        "projectType": "Commissioned Capstone Project",
+        "isMockData": false,
+        "detailPath": "projects/JEB04.json"
     },
     {
-        "id": "JEB04",
+        "id": "JEB05",
         "title": "PESO Mendez Employment Website",
         "description": "A web-based employment portal developed for PESO Mendez to connect job seekers and employers through job postings, applications, and applicant management.",
         "technologies": [
@@ -72,7 +97,7 @@
         "role": "Full Stack Developer"
     },
     {
-        "id": "JEB05",
+        "id": "JEB06",
         "title": "PESO Mendez Employment Mobile App",
         "description": "A mobile application employment portal developed for PESO Mendez to connect job seekers and employers through job postings, applications, and applicant management.",
         "technologies": [
@@ -88,7 +113,7 @@
         "role": "Full Stack Developer"
     },
     {
-        "id": "JEB06",
+        "id": "JEB07",
         "title": "DigiCog: Gaming Storefront and Community Hub",
         "description": "A full-stack gaming platform that combines game discovery and purchasing workflows with profiles, community posts, friendships, and private messaging in one responsive experience.",
         "technologies": [
@@ -108,39 +133,48 @@
         "role": "Solo Full Stack Developer",
         "projectType": "Full Stack Web Application",
         "isMockData": false,
-        "detailPath": "projects/JEB06.json",
+        "detailPath": "projects/JEB07.json",
         "liveUrl": "https://digicog.free.nf"
     },
     {
-        "id": "JEB07",
+        "id": "JEB08",
         "title": "Braille Calculator",
-        "description": "A web-based application that visually presents and simulates braille characters to demonstrate how numbers and symbols are represented in braille format.",
+        "description": "A frontend prototype showcasing the design of a hardware calculator with braille markings and voice assistance for visually impaired users.",
         "technologies": [
-            "Vite React"
+            "React",
+            "Vite",
+            "Tailwind CSS"
         ],
         "images": [
             "hcicalc/hcicalc_1.png"
         ],
-        "role": "Developer"
+        "role": "Developer",
+        "projectType": "3rd Year Project",
+        "isMockData": false,
+        "detailPath": "projects/JEB08.json",
+        "liveUrl": "https://hci-talking-calculator.vercel.app"
     },
     {
-        "id": "JEB08",
-        "title": "ELITS Website",
-        "description": "An organization website for ELITS CvSU Main Campus that showcases events, news, membership information, merchandise, and the organization’s profile.",
+        "id": "JEB09",
+        "title": "ELITS Website: WEBFEST Winning Entry",
+        "description": "A winning WEBFEST competition entry created as a static website for the ELITS student organization at CvSU Main Campus.",
         "technologies": [
             "HTML",
             "CSS",
             "JavaScript",
-            "Django",
-            "SQLite"
+            "Bootstrap"
         ],
         "images": [
             "elits/elits_1.png"
         ],
-        "role": "Full Stack Developer"
+        "role": "Frontend Developer",
+        "projectType": "WEBFEST Competition Winner",
+        "isMockData": false,
+        "detailPath": "projects/JEB09.json",
+        "liveUrl": "https://sephsuu.github.io/ELITS/"
     },
     {
-        "id": "JEB09",
+        "id": "JEB10",
         "title": "Calzada: An Ecommerce Website",
         "description": "An ecommerce website that showcase products and simulate adding to cart and purchasing order just like in any online shop websites.",
         "technologies": [
@@ -155,7 +189,7 @@
         "role": "Full Stack Developer"
     },
     {
-        "id": "JEB10",
+        "id": "JEB11",
         "title": "Tkinter Baking System",
         "description": "A desktop-based ATM simulation built with Tkinter that allows deposit, withdraw, and check account balances through a GUI.",
         "technologies": [

@@ -114,15 +114,31 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                                 {project.description}
                             </p>
                         </div>
-                        <div className="flex flex-wrap gap-2 lg:justify-end">
-                            {project.technologies.map((technology) => (
-                                <span
-                                    key={technology}
-                                    className="rounded-full border border-roast/20 bg-white px-3 py-1.5 text-sm"
+                        <div className="flex h-full flex-col justify-between items-end lg:self-stretch">
+                            <div className="flex flex-wrap gap-2 lg:justify-end">
+                                {project.technologies.map((technology) => (
+                                    <span
+                                        key={technology}
+                                        className="rounded-full border border-roast/20 bg-white px-3 py-1.5 text-sm"
+                                    >
+                                        {technology}
+                                    </span>
+                                ))}
+                            </div>
+                            {project.liveUrl && (
+                                <Link
+                                    href={project.liveUrl}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="group mt-6 inline-flex w-fit items-center gap-2 rounded-full bg-roast px-5 py-3 text-sm font-bold text-feather shadow-[0_8px_24px_rgba(88,56,42,0.24)] transition-all hover:-translate-y-0.5 hover:bg-roast/90 hover:shadow-[0_12px_30px_rgba(88,56,42,0.32)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-roast focus-visible:ring-offset-4 lg:mt-auto lg:self-end"
                                 >
-                                    {technology}
-                                </span>
-                            ))}
+                                    View Live App
+                                    <ArrowUpRight
+                                        aria-hidden="true"
+                                        className="size-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                                    />
+                                </Link>
+                            )}
                         </div>
                     </div>
 

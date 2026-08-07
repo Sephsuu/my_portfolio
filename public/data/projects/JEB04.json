@@ -1,0 +1,167 @@
+{
+    "id": "JEB04",
+    "title": "CvSU Faculty Connect: An Information Management System for CvSU Faculty",
+    "subtitle": "A centralized faculty operations and communication platform",
+    "description": "CvSU Faculty Connect is a commissioned capstone project that brings faculty administration, announcements, events, accomplishment reports, financial records, analytics, and real-time messaging into one role-aware platform.",
+    "role": "Frontend Developer",
+    "projectType": "Commissioned Capstone Project",
+    "isMockData": false,
+    "overview": {
+        "challenge": "CvSU faculty operations span multiple campuses, colleges, personnel roles, events, reports, financial records, and communication workflows. The platform needed to make these connected responsibilities manageable while presenting each user with the tools and information appropriate to their role.",
+        "solution": "We developed a responsive information management system with a Next.js and TypeScript frontend and a Laravel backend. I led the frontend implementation, building the reusable interface architecture and the role-specific experiences for administration, analytics, events, accomplishments, finances, and real-time messaging."
+    },
+    "contributors": [
+        {
+            "id": "frontend",
+            "tabLabel": "Frontend Dev",
+            "name": "Joseph Bataller",
+            "role": "Frontend Developer",
+            "image": "/images/sephsuu_black_robe.png",
+            "imageAlt": "Joseph Bataller wearing a black graduation robe",
+            "focusAreas": [
+                "Interface & architecture",
+                "Features & workflows"
+            ],
+            "contributions": [
+                "Built the responsive Next.js and TypeScript frontend architecture, including the application shell, mobile and desktop navigation, shared form controls, dialogs, tables, pagination, loading states, and reusable data hooks.",
+                "Implemented claim-based authentication and role-based interfaces for administrators, coordinators, members, and job-order personnel, together with user, faculty, campus, officer, and organizational-position management.",
+                "Developed the analytics and announcements dashboard with announcement CRUD, attachments, visibility controls, likes, and filterable campus allocation, college allocation, and gender-distribution visualizations.",
+                "Delivered calendar-based event discovery, event management, visibility controls, document and image uploads, and complete accomplishment-report creation, editing, viewing, and export workflows.",
+                "Built financial allocation and contribution interfaces for recording allocations, tracking member payments, presenting budget summaries, filtering records, paginating results, and exporting reports.",
+                "Implemented the real-time messaging experience with conversation creation and search, responsive navigation, optimistic delivery, attachments, message normalization, and Laravel Echo and Pusher updates."
+            ]
+        },
+        {
+            "id": "backend",
+            "tabLabel": "Backend Dev",
+            "name": "Marlon Mitra",
+            "role": "Laravel Backend Developer",
+            "image": "/images/lonsky_black_robe.png",
+            "imageAlt": "Lonsky wearing a black graduation robe",
+            "focusAreas": [
+                "Backend contribution",
+                "Details coming soon"
+            ],
+            "contributions": [
+                "Placeholder: Laravel API and server-side feature contribution details will be added.",
+                "Placeholder: Database architecture and data-management contribution details will be added.",
+                "Placeholder: Authentication and authorization contribution details will be added.",
+                "Placeholder: Real-time messaging backend contribution details will be added."
+            ]
+        }
+    ],
+    "technologies": [
+        "Next.js",
+        "TypeScript",
+        "Tailwind CSS",
+        "shadcn/ui",
+        "Laravel",
+        "MySQL",
+        "Supabase",
+        "Laravel Echo",
+        "Pusher"
+    ],
+    "highlights": [
+        "Responsive, reusable frontend architecture",
+        "Claim-based authentication and role-aware administration",
+        "Announcements, analytics, events, and accomplishment reports",
+        "Financial allocation and contribution management",
+        "Real-time conversations and message delivery",
+        "Multi-campus and college filtering"
+    ],
+    "images": [
+        "cvsufc/cvsufc_1.png"
+    ],
+    "modules": [
+        {
+            "id": "frontend-architecture",
+            "title": "Responsive Frontend Architecture",
+            "description": "A reusable Next.js and TypeScript application shell that supports consistent navigation, forms, dialogs, tables, pagination, data loading, and responsive behavior across the platform.",
+            "features": [
+                "Desktop and mobile navigation",
+                "Reusable form and dialog controls",
+                "Shared tables and pagination",
+                "Loading states and data hooks"
+            ],
+            "images": [
+                "cvsufc/cvsufc_1.png"
+            ]
+        },
+        {
+            "id": "personnel-administration",
+            "title": "Access and Personnel Administration",
+            "description": "Role-aware administration interfaces for managing users, faculty personnel, campuses, colleges, officers, and organizational positions across CvSU.",
+            "features": [
+                "Claim-based authentication",
+                "Role-specific interfaces",
+                "User and faculty management",
+                "Campus and college filtering"
+            ],
+            "images": [
+                "cvsufc/cvsufc_users_1.png",
+                "cvsufc/cvsufc_users_2.png",
+                "cvsufc/cvsufc_campuses_1.png",
+                "cvsufc/cvsufc_campuses_2.png"
+            ]
+        },
+        {
+            "id": "announcements-analytics",
+            "title": "Announcements and Analytics",
+            "description": "A dashboard for publishing faculty announcements and reviewing campus, college, and personnel insights through filterable visualizations.",
+            "features": [
+                "Announcement creation and editing",
+                "Attachments and visibility controls",
+                "Likes and engagement",
+                "Allocation and distribution charts"
+            ],
+            "images": [
+                "cvsufc/cvsufc_announcement_1.png",
+                "cvsufc/cvsufc_announcement_2.png"
+            ]
+        },
+        {
+            "id": "events-reports",
+            "title": "Events and Accomplishment Reports",
+            "description": "Calendar-based event workflows with visibility settings, supporting documents, images, and accomplishment reporting tools.",
+            "features": [
+                "Calendar-based event discovery",
+                "Event creation and management",
+                "Document and image uploads",
+                "Accomplishment report workflows"
+            ],
+            "images": [
+                "cvsufc/cvsufc_events_1.png",
+                "cvsufc/cvsufc_events_2.png"
+            ]
+        },
+        {
+            "id": "financial-management",
+            "title": "Financial Management",
+            "description": "Interfaces for recording allocations, tracking faculty contributions, reviewing budget summaries, filtering financial records, and preparing exports.",
+            "features": [
+                "Allocation recording",
+                "Monthly contribution tracking",
+                "Budget summaries and filters",
+                "Paginated and exportable reports"
+            ],
+            "images": [
+                "cvsufc/cvsufc_allocations_1.png",
+                "cvsufc/cvsufc_contributions_1.png"
+            ]
+        },
+        {
+            "id": "realtime-messaging",
+            "title": "Real-Time Messaging",
+            "description": "A responsive messaging experience for finding conversations, exchanging messages and attachments, and receiving real-time updates.",
+            "features": [
+                "Conversation creation and search",
+                "Optimistic message delivery",
+                "Attachment rendering",
+                "Laravel Echo and Pusher updates"
+            ],
+            "images": [
+                "cvsufc/cvsufc_messaging_1.png"
+            ]
+        }
+    ]
+}
