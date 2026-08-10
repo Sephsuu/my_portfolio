@@ -16,6 +16,7 @@ const fetchProjects = () => fetchJsonData<ProjectSummary[]>("projects.json");
 
 export function ExperienceSection() {
     const [projCount, setProjCount] = useState(3);
+    const [selectedFrames, setSelectedFrames] = useState<Record<string, number>>({});
     const {
         data: projects,
         loading,
@@ -65,6 +66,7 @@ export function ExperienceSection() {
 
                             <div className="absolute inset-0 flex items-center justify-center px-6 py-14 sm:px-10">
                                 {item.images.slice(0, 3).map((image, imageIndex) => {
+                                    const isSelected = selectedFrames[item.id] === imageIndex
                                     const frameStyles = [
                                         "z-1 -translate-x-[31%] -translate-y-[11%] -rotate-8 group-hover:-translate-x-[34%] group-hover:-rotate-10",
                                         "z-2 translate-x-[31%] -translate-y-[8%] rotate-8 group-hover:translate-x-[34%] group-hover:rotate-10",
@@ -72,9 +74,23 @@ export function ExperienceSection() {
                                     ]
 
                                     return (
-                                        <div
+                                        <button
+                                            type="button"
                                             key={`${image}-${imageIndex}`}
-                                            className={`group/frame absolute w-[72%] max-w-105 cursor-pointer bg-[#fffdf8] p-2 pb-8 shadow-[0_18px_30px_-12px_rgba(54,42,34,0.5)] transition-all duration-500 ease-out hover:z-[1000] hover:scale-[1.06] hover:rotate-0 hover:shadow-[0_28px_45px_-12px_rgba(54,42,34,0.55)] sm:w-[64%] sm:p-3 sm:pb-10 ${frameStyles[imageIndex]}`}
+                                            onClick={() =>
+                                                setSelectedFrames((current) => ({
+                                                    ...current,
+                                                    [item.id]: imageIndex,
+                                                }))
+                                            }
+                                            aria-label={`Bring ${item.title} screenshot ${imageIndex + 1} to front`}
+                                            aria-pressed={isSelected}
+                                            className={`group/frame absolute w-[72%] max-w-105 cursor-pointer bg-[#fffdf8] p-2 pb-8 shadow-[0_18px_30px_-12px_rgba(54,42,34,0.5)] transition-all duration-500 ease-out hover:scale-[1.03] hover:shadow-[0_24px_40px_-12px_rgba(54,42,34,0.5)] focus-visible:outline-3 focus-visible:outline-offset-4 focus-visible:outline-roast sm:w-[64%] sm:p-3 sm:pb-10 ${frameStyles[imageIndex]} ${
+                                                isSelected
+                                                    ? "ring-2 ring-roast/25 shadow-[0_28px_45px_-12px_rgba(54,42,34,0.55)]"
+                                                    : ""
+                                            }`}
+                                            style={{ zIndex: isSelected ? 1000 : imageIndex + 1 }}
                                         >
                                             <div className="relative aspect-[24/16] overflow-hidden bg-stone-200">
                                                 <Image
@@ -85,7 +101,7 @@ export function ExperienceSection() {
                                                     className="object-cover transition-transform duration-700 ease-out group-hover/frame:scale-[1.025]"
                                                 />
                                             </div>
-                                        </div>
+                                        </button>
                                     )
                                 })}
                             </div>
