@@ -169,7 +169,7 @@ export function ExperienceSection() {
                                                 className="h-auto rounded-full bg-roast px-5 py-2.5 text-sm text-white"
                                                 disabled
                                             >
-                                                Not availabler
+                                                Not available
                                             </Button>
                                         </HoverCardTrigger>
                                         <HoverCardContent>
