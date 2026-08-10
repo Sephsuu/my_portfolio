@@ -7,7 +7,7 @@ const routes = [
 
 export function Navbar() {
     return (
-        <header className="sticky top-0 z-50 h-16 border-b border-white/40 bg-feather/65 shadow-[0_4px_24px_rgba(88,56,42,0.08)] backdrop-blur-xl backdrop-saturate-150">
+        <header className="sticky top-0 z-50 h-16 border-b border-white/40 bg-feather/65 shadow-[0_7px_14px_-7px_rgba(88,56,42,0.22)] backdrop-blur-xl backdrop-saturate-150">
             <nav
                 aria-label="Primary navigation"
                 className="mx-auto flex h-full max-w-360 items-center justify-center px-4 sm:px-6 lg:px-8"

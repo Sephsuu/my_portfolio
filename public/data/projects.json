@@ -13,9 +13,13 @@
             "TanStack"
         ],
         "images": [
+            "kp/kp_inventory_2.png",
+            "kp/kp_finance_1.png",
             "kp/kp_0.png"
         ],
         "role": "Frontend Developer",
+        "projectType": "Commissioned Project",
+        "isMockData": false,
         "detailPath": "projects/JEB01.json"
     },
     {
@@ -33,6 +37,8 @@
             "Supabase"
         ],
         "images": [
+            "alumnitracer/tracer_admin_forms_1.png",
+            "alumnitracer/tracer_admin_events_1.png",
             "alumnitracer/tracer_auth_1.png"
         ],
         "role": "Full Stack Developer",
@@ -54,10 +60,13 @@
             "Supabase"
         ],
         "images": [
-            "papiverse/papiverse_2.png",
-            "papiverse/papiverse_1.png"
+            "papiverse/papiverse_1.png",
+            "papiverse/papiverse_3.png",
+            "papiverse/papiverse_2.png"
         ],
-        "role": "Full Stack Developer"
+        "role": "Full Stack Developer",
+        "projectType": "Franchise Management Platform",
+        "isMockData": false
     },
     {
         "id": "JEB04",
@@ -73,6 +82,8 @@
             "Supabase"
         ],
         "images": [
+            "cvsufc/cvsufc_announcement_1.png",
+            "cvsufc/cvsufc_events_1.png",
             "cvsufc/cvsufc_1.png"
         ],
         "role": "Frontend Developer",
@@ -92,9 +103,13 @@
             "MySQL"
         ],
         "images": [
-            "pesoweb/pesoweb_10.png"
+            "pesoweb/pesoweb_3.png",
+            "pesoweb/pesoweb_10.png",
+            "pesoweb/pesoweb_1.png"
         ],
-        "role": "Full Stack Developer"
+        "role": "Full Stack Developer",
+        "projectType": "Government Employment Platform",
+        "isMockData": false
     },
     {
         "id": "JEB06",
@@ -110,7 +125,9 @@
         "images": [
             "pesomobile/pesomobile_0.png"
         ],
-        "role": "Full Stack Developer"
+        "role": "Full Stack Developer",
+        "projectType": "Mobile Application",
+        "isMockData": false
     },
     {
         "id": "JEB07",
@@ -128,6 +145,8 @@
             "MySQL"
         ],
         "images": [
+            "digicog/digicog_community_1.png",
+            "digicog/digicog_shop_1.png",
             "digicog/digicog_home_1.png"
         ],
         "role": "Solo Full Stack Developer",
@@ -165,6 +184,8 @@
             "Bootstrap"
         ],
         "images": [
+            "elits/elits_home_1.png",
+            "elits/elits_home_3.png",
             "elits/elits_1.png"
         ],
         "role": "Frontend Developer",
@@ -184,9 +205,13 @@
             "Django"
         ],
         "images": [
+            "calzada/calzada_2.png",
+            "calzada/calzada_3.png",
             "calzada/calzada_1.png"
         ],
-        "role": "Full Stack Developer"
+        "role": "Full Stack Developer",
+        "projectType": "Academic E-commerce Project",
+        "isMockData": false
     },
     {
         "id": "JEB11",
@@ -197,8 +222,12 @@
             "Tkinter"
         ],
         "images": [
-            "bank/bank_0.png"
+            "bank/bank_0.png",
+            "bank/bank1_1.png",
+            "bank/bank3_1.png"
         ],
-        "role": "Developer"
+        "role": "Developer",
+        "projectType": "Desktop Application",
+        "isMockData": false
     }
 ]

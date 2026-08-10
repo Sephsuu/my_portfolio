@@ -4,14 +4,12 @@ import { Button } from "@/components/ui/button";
 import { Loader } from "@/components/custom/Loader";
 import { SectionReveal } from "@/components/custom/SectionReveal";
 import { HoverCard, HoverCardContent, HoverCardTrigger } from "@/components/ui/hover-card";
-import { Separator } from "@/components/ui/separator";
 import { useFetchData } from "@/hooks/use-fetch-data";
 import { fetchJsonData } from "@/lib/fetch-json-data";
 import { useState } from "react";
-import { Fragment } from "react/jsx-runtime";
 import Image from "next/image";
 import Link from "next/link";
-import { ExternalLink } from "lucide-react";
+import { ArrowRight, ExternalLink } from "lucide-react";
 import type { ProjectSummary } from "@/types/project";
 
 const fetchProjects = () => fetchJsonData<ProjectSummary[]>("projects.json");
@@ -27,11 +25,20 @@ export function ExperienceSection() {
     return (
         <SectionReveal
             id="experiences"
-            className="bg-feather scroll-mt-20 px-4 py-14 sm:px-6 sm:py-18 lg:px-8 lg:py-24"
+            className="relative isolate scroll-mt-20 overflow-hidden border-b bg-feather px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24"
         >
-            <h2 className="text-roast mb-10 text-center text-3xl font-bold sm:mb-14 sm:text-4xl lg:text-5xl">
-                Hands-on Experience
-            </h2>
+            <div
+                aria-hidden="true"
+                className="absolute top-0 right-0 -z-10 h-120 w-2/3 bg-[radial-gradient(ellipse_at_top_right,rgba(222,204,193,0.62),transparent_68%)]"
+            />
+
+            <header className="mx-auto mb-12 max-w-340 sm:mb-16">
+                <div className="grid gap-5 lg:grid-cols-[1fr_0.8fr] lg:items-end">
+                    <h2 className="max-w-3xl text-4xl leading-[1.08] font-bold tracking-tight text-roast sm:text-5xl lg:text-[3.5rem]">
+                        Experience built through real-world projects.
+                    </h2>
+                </div>
+            </header>
 
             {loading && (
                 <Loader label="Loading projects..." />
@@ -43,81 +50,110 @@ export function ExperienceSection() {
                 </p>
             )}
 
-            <div className="mx-auto max-w-340 space-y-14 sm:space-y-18 lg:space-y-24">
+            <div className="mx-auto max-w-340 space-y-6 sm:space-y-8">
                 {projects.slice(0, projCount).map((item, i) => (
                     <article
-                        className="grid items-center gap-6 lg:grid-cols-2 lg:gap-10 xl:gap-16"
+                        className="group grid rounded-3xl transition-all duration-500 ease-out hover:-translate-y-1 hover:border-roast/20 lg:grid-cols-2"
                         key={item.id}
                     >
                         <div
-                            className={`order-1 min-w-0 ${
+                            className={`relative min-h-90 min-w-0 sm:min-h-115 ${
                                 i % 2 === 0 ? "lg:order-1" : "lg:order-2"
                             }`}
                         >
-                            <Image
-                                src={`/images/projects/${item.images[0]}`}
-                                alt={`${item.title} project preview`}
-                                width={1200}
-                                height={684}
-                                sizes="(max-width: 1024px) 100vw, 600px"
-                                className="mx-auto h-auto w-full max-w-150 rounded-xl border border-slate-300 object-cover shadow-md"
-                            />
+                            {/* <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(255,255,255,0.7),transparent_40%),linear-gradient(145deg,#ded7ce,#b9ada1)]" /> */}
+
+                            <div className="absolute inset-0 flex items-center justify-center px-6 py-14 sm:px-10">
+                                {item.images.slice(0, 3).map((image, imageIndex) => {
+                                    const frameStyles = [
+                                        "z-1 -translate-x-[31%] -translate-y-[11%] -rotate-8 group-hover:-translate-x-[34%] group-hover:-rotate-10",
+                                        "z-2 translate-x-[31%] -translate-y-[8%] rotate-8 group-hover:translate-x-[34%] group-hover:rotate-10",
+                                        "z-3 translate-y-[15%] -rotate-1 group-hover:translate-y-[12%] group-hover:rotate-0",
+                                    ]
+
+                                    return (
+                                        <div
+                                            key={`${image}-${imageIndex}`}
+                                            className={`group/frame absolute w-[72%] max-w-105 cursor-pointer bg-[#fffdf8] p-2 pb-8 shadow-[0_18px_30px_-12px_rgba(54,42,34,0.5)] transition-all duration-500 ease-out hover:z-[1000] hover:scale-[1.06] hover:rotate-0 hover:shadow-[0_28px_45px_-12px_rgba(54,42,34,0.55)] sm:w-[64%] sm:p-3 sm:pb-10 ${frameStyles[imageIndex]}`}
+                                        >
+                                            <div className="relative aspect-[24/16] overflow-hidden bg-stone-200">
+                                                <Image
+                                                    src={`/images/projects/${image}`}
+                                                    alt={`${item.title} project screenshot ${imageIndex + 1}`}
+                                                    fill
+                                                    sizes="(max-width: 1024px) 70vw, 420px"
+                                                    className="object-cover transition-transform duration-700 ease-out group-hover/frame:scale-[1.025]"
+                                                />
+                                            </div>
+                                        </div>
+                                    )
+                                })}
+                            </div>
+
+                            <span className="absolute top-5 left-5 z-10 rounded-full border border-white/40 bg-white/85 px-4 py-2 text-xs font-bold tracking-wider text-roast uppercase shadow-sm backdrop-blur-md transition-all duration-300 group-hover:bg-white">
+                                {item.projectType}
+                            </span>
                         </div>
                         <div
-                            className={`order-2 flex min-w-0 flex-col items-start text-left ${
-                                i % 2 === 0
-                                    ? "lg:order-2"
-                                    : "lg:order-1 lg:items-end lg:text-right"
+                            className={`flex min-w-0 flex-col items-start justify-center p-6 text-left border border-roast/10 bg-white/75 rounded-xl shadow-[0_20px_55px_-38px_rgba(88,56,42,0.65)] backdrop-blur-sm sm:p-9 lg:p-10 xl:p-12 ${
+                                i % 2 === 0 ? "lg:order-2" : "lg:order-1"
                             }`}
                         >
                             <Link
                                 href={`/projects/${item.id}`}
-                                className="text-roast text-xl font-bold leading-snug hover:underline sm:text-2xl lg:text-3xl"
+                                className="text-2xl leading-tight font-bold text-roast decoration-1 underline-offset-4 transition-colors duration-300 hover:text-roast/70 hover:underline sm:text-3xl"
                             >
                                 {item.title}
                             </Link>
-                            <Separator className="my-3 bg-slate-300" />
-                            <p className="leading-relaxed text-roast/80 sm:text-lg">
+                            <p className="mt-4 leading-relaxed text-roast/70 sm:text-lg">
                                 {item.description}
                             </p>
-                            <div
-                                className={`mt-5 flex flex-wrap gap-x-1.5 gap-y-1 ${
-                                    i % 2 !== 0 ? "lg:justify-end" : ""
-                                }`}
-                            >
-                                <span className="text-roast font-bold">Technologies:</span>
+
+                            <div className="mt-6 flex flex-wrap gap-2">
                                 {item.technologies.map((tech) => (
-                                    <Fragment key={tech}>
-                                        <span className="text-roast hover:font-bold hover:underline">
-                                            {tech},
-                                        </span>
-                                    </Fragment>
+                                    <span
+                                        key={tech}
+                                        className="rounded-full border border-roast/10 bg-feather px-3 py-1 text-xs font-medium text-roast/75 transition-all duration-300 hover:-translate-y-0.5 hover:border-roast/25 hover:bg-white"
+                                    >
+                                        {tech}
+                                    </span>
                                 ))}
                             </div>
-                            <div className="mt-2">
-                                <span className="mr-2 font-bold text-roast">Role:</span>
-                                <span className="text-roast">{item.role}</span>
+
+                            <div className="mt-7 grid w-full gap-3 border-y border-roast/10 py-4 sm:grid-cols-2">
+                                <div className="flex items-center gap-3 text-sm text-roast/70">
+                                    <div>
+                                        <span className="block text-xs tracking-wider text-roast/50 uppercase">Role</span>
+                                        <span className="font-bold text-roast">{item.role}</span>
+                                    </div>
+                                </div>
+                                <div className="flex items-center gap-3 text-sm text-roast/70">
+                                    <div>
+                                        <span className="block text-xs tracking-wider text-roast/50 uppercase">Project type</span>
+                                        <span className="font-bold text-roast">{item.projectType}</span>
+                                    </div>
+                                </div>
                             </div>
-                            <div
-                                className={`mt-4 flex flex-wrap gap-3 ${
-                                    i % 2 !== 0 ? "lg:justify-end" : ""
-                                }`}
-                            >
+
+                            <div className="mt-6 flex flex-wrap gap-3">
                                 {item.detailPath ? (
                                     <Button
                                         asChild
-                                        className="bg-roast rounded-none text-base hover:border hover:border-black hover:bg-slate-50 hover:text-black sm:text-lg"
+                                        className="h-auto rounded-full bg-roast px-5 py-2.5 text-sm text-white transition-all duration-300 hover:-translate-y-0.5 hover:bg-black/85 hover:shadow-md"
                                     >
-                                        <Link href={`/projects/${item.id}`}>View More</Link>
+                                        <Link href={`/projects/${item.id}`}>
+                                            View project
+                                            <ArrowRight aria-hidden="true" />
+                                        </Link>
                                     </Button>
                                 ) : (
                                     <HoverCard>
                                         <HoverCardTrigger asChild>
                                             <Button
-                                                className="bg-roast rounded-none text-base hover:border hover:border-black hover:bg-slate-50 hover:text-black sm:text-lg"
+                                                className="h-auto rounded-full bg-roast px-5 py-2.5 text-sm text-white"
                                                 disabled
                                             >
-                                                View More
+                                                Not availabler
                                             </Button>
                                         </HoverCardTrigger>
                                         <HoverCardContent>
@@ -130,7 +166,7 @@ export function ExperienceSection() {
                                     <Button
                                         asChild
                                         variant="outline"
-                                        className="rounded-none border-roast bg-transparent text-base text-roast hover:bg-roast hover:text-white sm:text-lg"
+                                        className="h-auto rounded-full border-roast/30 bg-transparent px-5 py-2.5 text-sm text-roast transition-all duration-300 hover:-translate-y-0.5 hover:bg-roast hover:text-white hover:shadow-md"
                                     >
                                         <a
                                             href={item.liveUrl}
@@ -151,9 +187,9 @@ export function ExperienceSection() {
             {projCount < projects.length && (
                 <button
                     onClick={() => setProjCount(prev => prev + 3)}
-                    className="mx-auto mt-14 flex items-center justify-center text-2xl underline transition-opacity hover:opacity-60 sm:mt-18 sm:text-3xl lg:text-4xl"
+                    className="mx-auto mt-12 flex items-center justify-center rounded-full border border-roast/25 px-6 py-3 font-bold text-roast transition-all duration-300 hover:-translate-y-0.5 hover:border-roast hover:bg-roast hover:text-white hover:shadow-md sm:mt-16"
                 >
-                    See More
+                    View more projects
                 </button>
             )}
 
