@@ -20,6 +20,21 @@ html {
   scroll-behavior: smooth;
 }
 
+@keyframes hero-chat-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+.hero-chat-float {
+  animation: hero-chat-float 3.6s ease-in-out infinite;
+}
+
 .section-reveal {
   opacity: 0;
   transform: translateY(3rem);
@@ -42,6 +57,10 @@ html {
     opacity: 1;
     transform: none;
     transition: none;
+  }
+
+  .hero-chat-float {
+    animation: none;
   }
 }
 

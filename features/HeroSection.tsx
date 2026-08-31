@@ -1,6 +1,7 @@
 import Image from "next/image"
 
 import { Button } from "@/components/ui/button"
+import { FloatingPortfolioChat } from "@/features/playground/FloatingPortfolioChat"
 
 export function HeroSection() {
     return (
@@ -27,6 +28,7 @@ export function HeroSection() {
                         sizes="(max-width: 800px) 120vw, 70vw"
                         className="origin-bottom scale-125 object-contain object-bottom md:scale-[1.2] mt-8"
                     />
+                    <FloatingPortfolioChat />
                 </div>
 
                 <div className="order-1 flex min-w-0 flex-col px-5 pb-12 sm:px-10 md:order-2 md:px-10 md:pb-20 lg:px-14">
