@@ -151,12 +151,12 @@ export function FloatingPortfolioChat() {
                 <button
                     type="button"
                     aria-label="Open portfolio assistant"
-                    className="group absolute top-[14%] right-[7%] z-30 rounded-2xl transition-transform duration-300 hover:scale-[1.03] focus-visible:outline-3 focus-visible:outline-offset-4 focus-visible:outline-white md:top-[22%] md:right-[3%] lg:right-[7%]"
+                    className="group absolute top-[14%] right-[7%] z-30 rounded-2xl transition-transform duration-300 hover:scale-[1.03] focus-visible:outline-3 focus-visible:outline-offset-4 md:top-[22%] md:right-[3%] lg:right-[7%]"
                 >
                     <span className="hero-chat-float flex items-center gap-2.5 rounded-full bg-feather/95 px-5 py-3 text-sm font-bold text-roast shadow-[0_12px_30px_-12px_rgba(52,32,20,0.5)] backdrop-blur-xl transition-shadow group-hover:shadow-[0_16px_34px_-10px_rgba(52,32,20,0.58)] sm:text-base">
                         <span
                             aria-hidden="true"
-                            className="size-2 rounded-full bg-emerald-500 shadow-[0_0_0_3px_rgba(16,185,129,0.14)]"
+                            className="-mt-0.75 size-2 rounded-full bg-emerald-500 shadow-[0_0_0_3px_rgba(16,185,129,0.14)]"
                         />
                         Ask me anything
                     </span>
@@ -186,10 +186,6 @@ export function FloatingPortfolioChat() {
                             <DialogTitle className="truncate text-base text-[#252323]">
                                 Sephsuu AI
                             </DialogTitle>
-                            <DialogDescription className="mt-1 flex items-center gap-1.5 text-xs">
-                                <span className="size-1.5 rounded-full bg-emerald-500" aria-hidden="true" />
-                                Portfolio assistant
-                            </DialogDescription>
                         </div>
                     </div>
 
