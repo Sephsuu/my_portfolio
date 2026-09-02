@@ -1,7 +1,7 @@
 import Image from "next/image"
 
 import { Button } from "@/components/ui/button"
-import { FloatingPortfolioChat } from "@/features/playground/FloatingPortfolioChat"
+import { FloatingPortfolioChat } from "@/features/playground/sephsuu_ai/FloatingPortfolioChat"
 
 export function HeroSection() {
     return (
