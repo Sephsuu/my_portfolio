@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { SidebarProvider } from "@/components/ui/sidebar";
 
 export const metadata: Metadata = {
     title: "Papiverse Playground | Sephsuu",
@@ -10,5 +11,5 @@ export default function PlaygroundLayout({
 }: Readonly<{
     children: React.ReactNode;
 }>) {
-    return children;
+    return <SidebarProvider>{children}</SidebarProvider>;
 }

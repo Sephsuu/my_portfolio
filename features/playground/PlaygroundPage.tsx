@@ -1,24 +1,24 @@
 "use client";
 
-import Link from "next/link";
 import {
     AlertCircle,
     ArrowUp,
     Boxes,
     Code2,
-    House,
-    Menu,
     MessageCircleMore,
-    PanelLeftClose,
     Plus,
     RotateCcw,
     Sparkles,
-    X,
 } from "lucide-react";
 import { FormEvent, useEffect, useRef, useState } from "react";
 
 import { RequestClientError } from "@/lib/http/request-client";
 import { sephsuuService } from "@/service/sephsuu.service";
+import { PlaygroundSidebar } from "@/components/custom/PlaygroundSidebar";
+import { AppAvatar } from "@/components/shared/AppAvatar";
+import { AppButton } from "@/components/shared/AppButton";
+import { AppTextarea } from "@/components/shared/AppTextarea";
+import { SidebarInset, SidebarTrigger } from "@/components/ui/sidebar";
 
 type Message = {
     id: number;
@@ -61,7 +61,6 @@ function getErrorMessage(error: unknown) {
 }
 
 export function PlaygroundPage() {
-    const [sidebarOpen, setSidebarOpen] = useState(false);
     const [input, setInput] = useState("");
     const [messages, setMessages] = useState<Message[]>([]);
     const [isLoading, setIsLoading] = useState(false);
@@ -130,84 +129,12 @@ export function PlaygroundPage() {
     }
 
     return (
-        <main className="relative flex h-dvh overflow-hidden bg-white text-[#202123]">
-            {sidebarOpen && (
-                <button
-                    type="button"
-                    aria-label="Close navigation"
-                    className="absolute inset-0 z-30 bg-black/30 backdrop-blur-[1px] md:hidden"
-                    onClick={() => setSidebarOpen(false)}
-                />
-            )}
-
-            <aside
-                className={`absolute inset-y-0 left-0 z-40 flex w-64 flex-col border-r border-black/5 bg-[#f7f7f8] p-3 transition-transform duration-300 md:static md:translate-x-0 ${
-                    sidebarOpen ? "translate-x-0" : "-translate-x-full"
-                }`}
-            >
-                <div className="mb-5 flex h-11 items-center justify-between px-2">
-                    <Link
-                        href="/playground"
-                        className="flex items-center gap-2.5 rounded-lg focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#58382a]"
-                    >
-                        <span className="grid size-8 place-items-center rounded-full bg-[#202123] text-white shadow-sm">
-                            <Sparkles className="size-4" aria-hidden="true" />
-                        </span>
-                        <span className="text-[15px] font-semibold tracking-tight">Sephsuu AI</span>
-                    </Link>
-
-                    <button
-                        type="button"
-                        aria-label="Close sidebar"
-                        className="grid size-9 place-items-center rounded-lg text-[#5d5d63] transition-colors hover:bg-black/5 md:hidden"
-                        onClick={() => setSidebarOpen(false)}
-                    >
-                        <X className="size-5" />
-                    </button>
-                </div>
-
-                <nav aria-label="Playground navigation" className="space-y-1">
-                    <Link
-                        href="/"
-                        className="flex h-11 items-center gap-3 rounded-xl px-3 text-sm font-medium transition-colors hover:bg-black/5 focus-visible:outline-2 focus-visible:outline-offset-1 focus-visible:outline-[#58382a]"
-                    >
-                        <House className="size-[18px]" strokeWidth={1.8} aria-hidden="true" />
-                        Home
-                    </Link>
-                    <Link
-                        href="/playground"
-                        aria-current="page"
-                        className="flex h-11 items-center gap-3 rounded-xl bg-white px-3 text-sm font-medium shadow-[0_1px_2px_rgba(0,0,0,0.06)] transition-colors hover:bg-white/80 focus-visible:outline-2 focus-visible:outline-offset-1 focus-visible:outline-[#58382a]"
-                    >
-                        <span className="grid size-[18px] place-items-center rounded-[5px] bg-[#58382a] text-white">
-                            <Sparkles className="size-3" aria-hidden="true" />
-                        </span>
-                        Papiverse
-                    </Link>
-                </nav>
-
-                <div className="mt-auto px-3 pb-2 text-xs leading-5 text-[#818188]">
-                    Ask about Joseph&apos;s work, skills, and experience.
-                </div>
-            </aside>
-
-            <section className="relative flex min-w-0 flex-1 flex-col bg-white">
+        <main className="flex h-dvh w-full overflow-hidden bg-background text-foreground">
+            <PlaygroundSidebar />
+            <SidebarInset className="relative min-w-0 overflow-hidden">
                 <header className="flex h-16 shrink-0 items-center justify-between px-4 sm:px-6">
                     <div className="flex items-center gap-2">
-                        <button
-                            type="button"
-                            aria-label="Open sidebar"
-                            className="grid size-10 place-items-center rounded-xl text-[#4b4b50] transition-colors hover:bg-[#f4f4f4] md:hidden"
-                            onClick={() => setSidebarOpen(true)}
-                        >
-                            <Menu className="size-5" />
-                        </button>
-                        <span
-                            aria-hidden="true"
-                            className="hidden size-10 place-items-center rounded-xl text-[#8a8a91] md:grid"
-                        >
-                            <PanelLeftClose className="size-5" strokeWidth={1.7} />
-                        </span>
+                        <SidebarTrigger className="size-10 rounded-xl" />
                         <div>
                             <p className="text-sm font-semibold tracking-tight sm:text-[15px]">Sephsuu AI</p>
                             <p className="flex items-center gap-1.5 text-[11px] text-[#8a8a91]">
@@ -217,27 +144,28 @@ export function PlaygroundPage() {
                         </div>
                     </div>
 
-                    <button
+                    <AppButton
                         type="button"
+                        variant="outline"
                         disabled={messages.length === 0 || isLoading}
                         onClick={startNewChat}
-                        className="flex items-center gap-2 rounded-full border border-black/10 px-3.5 py-2 text-xs font-medium transition-colors hover:bg-[#f7f7f8] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#58382a] disabled:cursor-not-allowed disabled:opacity-40 sm:text-sm"
+                        className="rounded-full px-3.5 text-xs sm:text-sm"
                     >
                         <RotateCcw className="size-3.5" aria-hidden="true" />
                         <span className="hidden sm:inline">New chat</span>
-                    </button>
+                    </AppButton>
                 </header>
 
                 <div className="min-h-0 flex-1 overflow-y-auto">
                     {messages.length === 0 ? (
                         <div className="mx-auto flex min-h-full w-full max-w-3xl flex-col items-center justify-center px-5 pb-28 pt-12 sm:px-8">
-                            <div className="mb-6 grid size-12 place-items-center rounded-2xl bg-[#202123] text-white shadow-[0_8px_24px_rgba(0,0,0,0.12)]">
+                            <div className="mb-6 grid size-12 place-items-center rounded-2xl bg-primary text-primary-foreground shadow-lg">
                                 <Sparkles className="size-5" aria-hidden="true" />
                             </div>
-                            <h1 className="text-center text-3xl font-semibold tracking-[-0.04em] text-[#202123] sm:text-4xl">
+                            <h1 className="text-center text-3xl font-semibold tracking-[-0.04em] text-foreground sm:text-4xl">
                                 How can I help?
                             </h1>
-                            <p className="mt-3 max-w-md text-center text-sm leading-6 text-[#73737a] sm:text-[15px]">
+                            <p className="mt-3 max-w-md text-center text-sm leading-6 text-muted-foreground sm:text-[15px]">
                                 Ask about Joseph&apos;s background, technical skills, experience, or software projects.
                             </p>
 
@@ -246,18 +174,19 @@ export function PlaygroundPage() {
                                     const Icon = suggestion.icon;
 
                                     return (
-                                        <button
+                                        <AppButton
                                             key={suggestion.prompt}
                                             type="button"
                                             disabled={isLoading}
-                                            className="group flex min-h-25 flex-col items-start justify-between rounded-2xl border border-black/10 p-4 text-left transition-all hover:-translate-y-0.5 hover:border-black/20 hover:bg-[#fafafa] hover:shadow-sm focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#58382a]"
+                                            variant="outline"
+                                            className="group h-auto min-h-25 flex-col items-start justify-between rounded-2xl p-4 text-left hover:-translate-y-0.5 hover:bg-accent/50 hover:shadow-sm"
                                             onClick={() => void sendMessage(suggestion.prompt)}
                                         >
-                                            <Icon className="size-[18px] text-[#7b7b82] transition-colors group-hover:text-[#58382a]" strokeWidth={1.8} />
-                                            <span className="mt-4 text-[13px] font-medium text-[#414146]">
+                                            <Icon className="size-[18px] text-muted-foreground transition-colors group-hover:text-primary" strokeWidth={1.8} />
+                                            <span className="mt-4 text-[13px] font-medium text-foreground">
                                                 {suggestion.title}
                                             </span>
-                                        </button>
+                                        </AppButton>
                                     );
                                 })}
                             </div>
@@ -271,9 +200,7 @@ export function PlaygroundPage() {
                                         className={`flex gap-4 ${message.role === "user" ? "justify-end" : "items-start"}`}
                                     >
                                         {message.role === "assistant" && (
-                                            <span className="mt-0.5 grid size-8 shrink-0 place-items-center rounded-full bg-[#202123] text-white">
-                                                <Sparkles className="size-3.5" aria-hidden="true" />
-                                            </span>
+                                            <AppAvatar className="mt-0.5 size-8 shrink-0" fallback="AI" />
                                         )}
 
                                         <div
@@ -290,9 +217,7 @@ export function PlaygroundPage() {
 
                                 {isLoading && (
                                     <article className="flex items-start gap-4" aria-label="Sephsuu AI is thinking">
-                                        <span className="mt-0.5 grid size-8 shrink-0 place-items-center rounded-full bg-[#202123] text-white">
-                                            <Sparkles className="size-3.5" aria-hidden="true" />
-                                        </span>
+                                        <AppAvatar className="mt-0.5 size-8 shrink-0" fallback="AI" />
                                         <div className="flex h-9 items-center gap-1.5" aria-hidden="true">
                                             {[0, 1, 2].map((dot) => (
                                                 <span
@@ -333,25 +258,28 @@ export function PlaygroundPage() {
                         onSubmit={handleSubmit}
                         className="pointer-events-auto mx-auto flex w-full max-w-3xl items-end gap-2 rounded-[26px] border border-black/10 bg-white p-2 shadow-[0_4px_24px_rgba(0,0,0,0.09)] focus-within:border-black/20"
                     >
-                        <button
+                        <AppButton
                             type="button"
                             aria-label="Start a new chat"
                             title="Start a new chat"
                             disabled={(messages.length === 0 && !input) || isLoading}
                             onClick={startNewChat}
-                            className="grid size-10 shrink-0 place-items-center rounded-full text-[#5b5b61] transition-colors hover:bg-[#f2f2f2] disabled:cursor-not-allowed disabled:opacity-35"
+                            variant="ghost"
+                            size="icon"
+                            className="size-10 shrink-0 rounded-full"
                         >
                             <Plus className="size-5" strokeWidth={1.8} />
-                        </button>
+                        </AppButton>
 
-                        <textarea
+                        <AppTextarea
                             ref={textareaRef}
                             value={input}
                             aria-label="Message Sephsuu AI"
                             rows={1}
                             disabled={isLoading}
                             placeholder={isLoading ? "Waiting for a response..." : "Ask about Joseph or his work"}
-                            className="max-h-32 min-h-10 flex-1 resize-none bg-transparent px-1 py-2.5 text-[15px] leading-5 outline-none placeholder:text-[#8d8d93]"
+                            className="min-w-0 flex-1"
+                            textareaClassName="max-h-32 min-h-10 resize-none border-0 bg-transparent px-1 py-2.5 text-[15px] leading-5 shadow-none focus-visible:ring-0"
                             onChange={(event) => {
                                 setInput(event.target.value);
                                 event.currentTarget.style.height = "auto";
@@ -365,20 +293,21 @@ export function PlaygroundPage() {
                             }}
                         />
 
-                        <button
+                        <AppButton
                             type="submit"
                             aria-label="Send message"
                             disabled={!input.trim() || isLoading}
-                            className="grid size-10 shrink-0 place-items-center rounded-full bg-[#202123] text-white transition-all hover:bg-black disabled:bg-[#e5e5e5] disabled:text-[#a3a3a3]"
+                            size="icon"
+                            className="size-10 shrink-0 rounded-full"
                         >
                             <ArrowUp className="size-[18px]" strokeWidth={2.2} />
-                        </button>
+                        </AppButton>
                     </form>
                     <p className="pointer-events-auto mx-auto mt-2 max-w-3xl text-center text-[10px] leading-4 text-[#929298] sm:text-[11px]">
                         Sephsuu AI can make mistakes. Verify important details before relying on them.
                     </p>
                 </div>
-            </section>
+            </SidebarInset>
         </main>
     );
 }

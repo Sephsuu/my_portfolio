@@ -36,9 +36,23 @@ export function AppButton({
     disabled,
     className,
     children,
+    asChild,
     ...props
 }: AppButtonProps) {
     const resolvedIcon = icon ?? (actionType ? ACTION_ICONS[actionType] : null);
+
+    if (asChild) {
+        return (
+            <Button
+                asChild
+                className={cn(actionType ? ACTION_STYLES[actionType] : "", className)}
+                disabled={disabled || onProcess}
+                {...props}
+            >
+                {children}
+            </Button>
+        );
+    }
 
     return (
         <Button
