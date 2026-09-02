@@ -28,7 +28,7 @@ export function ResumeAlignerPage() {
 				<div className="min-h-0 flex-1 overflow-y-auto px-4 sm:px-6 lg:px-8">
 					<section className="mx-auto w-full max-w-3xl pb-12 pt-10 lg:pt-16">
 						<div className="rounded-3xl border bg-card p-5 shadow-[0_24px_70px_-40px_color-mix(in_oklab,var(--primary)_45%,transparent)] sm:p-8">
-							<div className="mt-7 space-y-6">
+							<div className="space-y-6">
 								<ResumeUploadCard 
 									file={resume} 
 									onFileChange={setResume} 
