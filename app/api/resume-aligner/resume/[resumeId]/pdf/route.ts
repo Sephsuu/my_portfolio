@@ -1,9 +1,13 @@
 import { NextRequest, NextResponse } from "next/server";
 
 import {
-    getResumeAlignerPayloadMessage,
+    getResumeAlignerErrorMessage,
     getResumeAlignerUrl,
 } from "@/lib/http/resume-aligner-server";
+import {
+    RequestServerError,
+    requestServerData,
+} from "@/lib/http/request-server";
 
 export async function GET(
     request: NextRequest,
@@ -14,26 +18,17 @@ export async function GET(
     const query = version ? `?version=${encodeURIComponent(version)}` : "";
 
     try {
-        const response = await fetch(
+        const response = await requestServerData<ArrayBuffer>(
             getResumeAlignerUrl(
                 `/resume/${encodeURIComponent(resumeId)}/pdf${query}`,
             ),
-            { headers: { Accept: "application/pdf" }, cache: "no-store" },
+            "GET",
+            { Accept: "application/pdf" },
+            undefined,
+            { responseType: "arrayBuffer", cache: "no-store" },
         );
 
-        if (!response.ok) {
-            const payload = await response.json().catch(() => null);
-            return NextResponse.json(
-                {
-                    message:
-                        getResumeAlignerPayloadMessage(payload) ??
-                        "Resume PDF unavailable.",
-                },
-                { status: response.status },
-            );
-        }
-
-        return new NextResponse(response.body, {
+        return new NextResponse(response.data, {
             status: response.status,
             headers: {
                 "Content-Type":
@@ -44,7 +39,17 @@ export async function GET(
                 "Cache-Control": "no-store",
             },
         });
-    } catch {
+    } catch (error) {
+        if (error instanceof RequestServerError) {
+            return NextResponse.json(
+                {
+                    message: getResumeAlignerErrorMessage(error),
+                    details: error.payload,
+                },
+                { status: error.status },
+            );
+        }
+
         return NextResponse.json(
             { message: "Unable to reach the resume PDF service." },
             { status: 502 },

@@ -21,6 +21,12 @@
 - Use shared components such as `AppButton`, `AppTextarea`, `AppAvatar`, and `AppSidebar` for consistent controls and presentation.
 - Keep API and chat state in the feature component; keep navigation and other reusable presentation in custom/shared components.
 
+## HTTP requests
+
+- All outbound requests from services and API route handlers must use the generic request utilities in `lib/http`.
+- Do not call `fetch` directly from a service or API route. Extend the generic utility when a new response type or request option is needed.
+- Keep JSON, text/HTML, multipart, and binary response handling centralized in the request utilities.
+
 ## Validation
 
 - Run `npx tsc --noEmit`, scoped ESLint for changed files, and `npm run build` after UI changes.

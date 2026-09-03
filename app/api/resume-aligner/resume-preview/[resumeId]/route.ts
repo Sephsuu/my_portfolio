@@ -1,9 +1,13 @@
 import { NextRequest, NextResponse } from "next/server";
 
 import {
-    getResumeAlignerPayloadMessage,
+    getResumeAlignerErrorMessage,
     getResumeAlignerUrl,
 } from "@/lib/http/resume-aligner-server";
+import {
+    RequestServerError,
+    requestServerData,
+} from "@/lib/http/request-server";
 
 export async function GET(
     request: NextRequest,
@@ -14,33 +18,36 @@ export async function GET(
     const query = version ? `?version=${encodeURIComponent(version)}` : "";
 
     try {
-        const response = await fetch(
+        const response = await requestServerData<string>(
             getResumeAlignerUrl(
                 `/resume-preview/${encodeURIComponent(resumeId)}${query}`,
             ),
-            { headers: { Accept: "text/html" }, cache: "no-store" },
+            "GET",
+            { Accept: "text/html" },
+            undefined,
+            { responseType: "text", cache: "no-store" },
         );
 
-        if (!response.ok) {
-            const payload = await response.json().catch(() => null);
-            return NextResponse.json(
-                {
-                    message:
-                        getResumeAlignerPayloadMessage(payload) ??
-                        "Resume preview unavailable.",
-                },
-                { status: response.status },
-            );
-        }
-
-        return new NextResponse(await response.text(), {
+        return new NextResponse(response.data, {
             status: response.status,
             headers: {
-                "Content-Type": "text/html; charset=utf-8",
+                "Content-Type":
+                    response.headers.get("Content-Type") ??
+                    "text/html; charset=utf-8",
                 "Cache-Control": "no-store",
             },
         });
-    } catch {
+    } catch (error) {
+        if (error instanceof RequestServerError) {
+            return NextResponse.json(
+                {
+                    message: getResumeAlignerErrorMessage(error),
+                    details: error.payload,
+                },
+                { status: error.status },
+            );
+        }
+
         return NextResponse.json(
             { message: "Unable to reach the resume preview service." },
             { status: 502 },

@@ -3,6 +3,7 @@ import "server-only";
 import { getSephsuuApiUrl } from "@/lib/http/api-server";
 
 type RequestMethod = "GET" | "POST" | "PUT" | "PATCH" | "DELETE";
+type RequestServerResponseType = "json" | "text" | "arrayBuffer";
 
 export class RequestServerError extends Error {
     status: number;
@@ -19,7 +20,47 @@ export class RequestServerError extends Error {
 type RequestServerOptions = {
     onUnauthorized?: () => void | Promise<void>;
     onForbidden?: () => void | Promise<void>;
+    responseType?: RequestServerResponseType;
+    cache?: RequestCache;
+    redirect?: RequestRedirect;
+    signal?: AbortSignal;
 };
+
+async function readErrorPayload(response: Response) {
+    const contentType = response.headers.get("Content-Type") ?? "";
+
+    return contentType.includes("application/json")
+        ? response.json().catch(() => null)
+        : response.text().catch(() => null);
+}
+
+function getErrorMessage(payload: unknown, status: number) {
+    if (payload && typeof payload === "object") {
+        if ("message" in payload && typeof payload.message === "string") {
+            return payload.message;
+        }
+
+        if ("detail" in payload) {
+            const detail = payload.detail;
+            if (typeof detail === "string") return detail;
+
+            if (Array.isArray(detail)) {
+                const messages = detail
+                    .map((item) =>
+                        item && typeof item === "object" && "msg" in item
+                            ? String(item.msg)
+                            : null,
+                    )
+                    .filter((message): message is string => Boolean(message));
+
+                if (messages.length > 0) return messages.join(" ");
+            }
+        }
+    }
+
+    if (typeof payload === "string" && payload.trim()) return payload;
+    return `Request failed (${status})`;
+}
 
 export async function requestServerData<T = unknown>(
     url: string,
@@ -28,80 +69,69 @@ export async function requestServerData<T = unknown>(
     body?: unknown,
     options?: RequestServerOptions,
 ): Promise<{ status: number; data: T; headers: Headers }> {
-    const { onUnauthorized, onForbidden } = options ?? {};
-
-    const isAbsolute = /^https?:\/\//i.test(url);
-    const fullUrl = isAbsolute ? url : getSephsuuApiUrl(url);
-
+    const {
+        onUnauthorized,
+        onForbidden,
+        responseType = "json",
+        cache,
+        redirect,
+        signal,
+    } = options ?? {};
+    const fullUrl = /^https?:\/\//i.test(url) ? url : getSephsuuApiUrl(url);
     const finalHeaders = new Headers(headers ?? {});
 
-    if (!(body instanceof FormData)) {
-        if (!finalHeaders.has("Accept")) {
-            finalHeaders.set("Accept", "application/json");
-        }
-
-        if (!finalHeaders.has("Content-Type")) {
-            finalHeaders.set("Content-Type", "application/json");
-        }
+    if (!finalHeaders.has("Accept")) {
+        finalHeaders.set(
+            "Accept",
+            responseType === "text"
+                ? "text/plain, text/html"
+                : responseType === "arrayBuffer"
+                  ? "application/octet-stream"
+                  : "application/json",
+        );
     }
 
-    console.log("URL: ", fullUrl);
-    console.log("Method: ", method);
-    console.log("Headers: ", Object.fromEntries(finalHeaders.entries()));
-    console.log("Body: ", body);
+    if (
+        body !== undefined &&
+        !(body instanceof FormData) &&
+        !finalHeaders.has("Content-Type")
+    ) {
+        finalHeaders.set("Content-Type", "application/json");
+    }
 
-    const res = await fetch(fullUrl, {
+    const response = await fetch(fullUrl, {
         method,
         headers: finalHeaders,
+        cache,
+        redirect,
+        signal,
         body:
             body instanceof FormData
                 ? body
-                : body
+                : body !== undefined
                   ? JSON.stringify(body)
                   : undefined,
     });
 
-    console.log(res);
-    console.log("Response Status: ", res.status);
-    console.log("\n");
+    if (response.status === 401 && onUnauthorized) await onUnauthorized();
+    if (response.status === 403 && onForbidden) await onForbidden();
 
-    if (res.status === 401) {
-        if (onUnauthorized) {
-            await onUnauthorized();
-        }
-
-        throw new RequestServerError("Unauthorized", 401, {
-            message: "Unauthorized",
-        });
+    if (!response.ok) {
+        const payload = await readErrorPayload(response);
+        throw new RequestServerError(
+            getErrorMessage(payload, response.status),
+            response.status,
+            payload,
+        );
     }
 
-    if (res.status === 403) {
-        if (onForbidden) {
-            await onForbidden();
-        }
+    const data = (
+        responseType === "text"
+            ? await response.text()
+            : responseType === "arrayBuffer"
+              ? await response.arrayBuffer()
+              : await response.json().catch(() => null)
+    ) as T;
 
-        throw new RequestServerError("Forbidden", 403, {
-            message: "Forbidden",
-        });
-    }
-
-    const data = await res.json().catch(() => ({}) as T);
-
-    if (!res.ok) {
-        const message =
-            typeof data === "object" && data && "message" in data
-                ? String(
-                      (data as { message?: unknown }).message ??
-                          `Request failed (${res.status})`,
-                  )
-                : `Request failed (${res.status})`;
-
-        throw new RequestServerError(message, res.status, data);
-    }
-
-    return {
-        status: res.status,
-        data,
-        headers: res.headers,
-    };
+    return { status: response.status, data, headers: response.headers };
 }
