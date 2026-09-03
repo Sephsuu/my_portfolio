@@ -1,15 +1,16 @@
 "use client";
 
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, ClipboardCheck, FileInput } from "lucide-react";
 
 import { PlaygroundSidebar } from "@/components/custom/PlaygroundSidebar";
 import { AppButton } from "@/components/shared/AppButton";
 import { AppTextarea } from "@/components/shared/AppTextarea";
+import { AppTabSwitcher } from "@/components/shared/AppTabSwitcher";
 import { SidebarInset, SidebarTrigger } from "@/components/ui/sidebar";
 import { ResumeUploadCard } from "@/features/playground/resume_aligner/ResumeUploadCard";
 import { ResumeMatchResults } from "@/features/playground/resume_aligner/ResumeMatchResults";
 import { AlignedResumePreview } from "@/features/playground/resume_aligner/AlignedResumePreview";
-import { useRef, useState } from "react";
+import { useState } from "react";
 import { RequestClientError } from "@/lib/http/request-client";
 import {
     resumeAlignerService,
@@ -26,14 +27,16 @@ export function ResumeAlignerPage() {
     const [versions, setVersions] = useState<number[]>([]);
     const [selectedVersion, setSelectedVersion] = useState<number | null>(null);
     const [error, setError] = useState<string | null>(null);
-    const resultsRef = useRef<HTMLDivElement>(null);
-    const previewRef = useRef<HTMLDivElement>(null);
+    const [selectedTab, setSelectedTab] = useState("input");
+    const [previewOpen, setPreviewOpen] = useState(false);
 
     function clearResults() {
         setResult(null);
         setVersions([]);
         setSelectedVersion(null);
         setError(null);
+        setSelectedTab("input");
+        setPreviewOpen(false);
     }
 
     async function handleAlignResume() {
@@ -51,12 +54,7 @@ export function ResumeAlignerPage() {
                 jobDescription,
             );
             setResult(matchResult);
-            window.setTimeout(() => {
-                resultsRef.current?.scrollIntoView({
-                    behavior: "smooth",
-                    block: "start",
-                });
-            }, 0);
+            setSelectedTab("qualification");
         } catch (requestError) {
             setError(
                 requestError instanceof RequestClientError ||
@@ -85,12 +83,7 @@ export function ResumeAlignerPage() {
                 ),
             );
             setSelectedVersion(aligned.version_number);
-            window.setTimeout(() => {
-                previewRef.current?.scrollIntoView({
-                    behavior: "smooth",
-                    block: "start",
-                });
-            }, 0);
+            setPreviewOpen(true);
         } catch (requestError) {
             setError(
                 requestError instanceof Error
@@ -142,46 +135,73 @@ export function ResumeAlignerPage() {
 
                 <div className="min-h-0 flex-1 overflow-y-auto px-4 sm:px-6 lg:px-8">
                     <div className="mx-auto w-full max-w-5xl space-y-8 pb-12 pt-10 lg:pt-16">
-                        <section className="mx-auto max-w-3xl">
-                            <div className="rounded-3xl border bg-card p-5 shadow-[0_24px_70px_-40px_color-mix(in_oklab,var(--primary)_45%,transparent)] sm:p-8">
-                                <div className="space-y-6">
-                                    <ResumeUploadCard
-                                        file={resume}
-                                        onFileChange={(file) => {
-                                            setResume(file);
-                                            clearResults();
-                                        }}
-                                    />
-                                    <AppTextarea
-                                        label="Job description"
-                                        value={jobDescription}
-                                        rows={7}
-                                        maxLength={50_000}
-                                        placeholder="Paste the job description here..."
-                                        textareaClassName="resize-none bg-background"
-                                        onChange={(event) => {
-                                            setJobDescription(
-                                                event.target.value,
-                                            );
-                                            clearResults();
-                                        }}
-                                    />
-                                    <AppButton
-                                        type="button"
-                                        className="h-11 w-full"
-                                        disabled={
-                                            !resume || !jobDescription.trim()
-                                        }
-                                        onProcess={isProcessing}
-                                        loadingLabel="Matching resume..."
-                                        onClick={() => void handleAlignResume()}
-                                    >
-                                        Align my resume{" "}
-                                        <ArrowRight className="size-4" />
-                                    </AppButton>
+                        <AppTabSwitcher
+                            tabs={[
+                                {
+                                    key: "input",
+                                    title: "Resume & Job",
+                                    icon: FileInput,
+                                },
+                                {
+                                    key: "qualification",
+                                    title: "Qualification Check",
+                                    icon: ClipboardCheck,
+                                    disabled: !result,
+                                },
+                            ]}
+                            selectedTab={selectedTab}
+                            setSelectedTab={setSelectedTab}
+                            className="flex justify-center"
+                        />
+
+                        {selectedTab === "input" ? (
+                            <section className="mx-auto max-w-3xl">
+                                <div className="rounded-3xl border bg-card p-5 shadow-[0_24px_70px_-40px_color-mix(in_oklab,var(--primary)_45%,transparent)] sm:p-8">
+                                    <div className="space-y-6">
+                                        <ResumeUploadCard
+                                            file={resume}
+                                            onFileChange={(file) => {
+                                                setResume(file);
+                                                clearResults();
+                                            }}
+                                        />
+                                        <AppTextarea
+                                            label="Job description"
+                                            value={jobDescription}
+                                            rows={7}
+                                            maxLength={50_000}
+                                            placeholder="Paste the job description here..."
+                                            textareaClassName="resize-none bg-background"
+                                            onChange={(event) => {
+                                                setJobDescription(
+                                                    event.target.value,
+                                                );
+                                                clearResults();
+                                            }}
+                                        />
+                                        <AppButton
+                                            type="button"
+                                            className="h-11 w-full"
+                                            disabled={
+                                                Boolean(result) ||
+                                                !resume ||
+                                                !jobDescription.trim()
+                                            }
+                                            onProcess={isProcessing}
+                                            loadingLabel="Matching resume..."
+                                            onClick={() =>
+                                                void handleAlignResume()
+                                            }
+                                        >
+                                            {result
+                                                ? "Qualification check complete"
+                                                : "Align my resume"}{" "}
+                                            <ArrowRight className="size-4" />
+                                        </AppButton>
+                                    </div>
                                 </div>
-                            </div>
-                        </section>
+                            </section>
+                        ) : null}
                         {error ? (
                             <p
                                 className="mx-auto max-w-3xl rounded-xl border border-destructive/20 bg-destructive/5 p-4 text-sm text-destructive"
@@ -190,33 +210,37 @@ export function ResumeAlignerPage() {
                                 {error}
                             </p>
                         ) : null}
-                        {result ? (
-                            <div ref={resultsRef} className="scroll-mt-24">
+                        {selectedTab === "qualification" && result ? (
+                            <div className="space-y-8">
                                 <ResumeMatchResults
                                     result={result}
                                     onAlign={() =>
                                         void handleGenerateAlignedResume()
                                     }
+                                    onPreview={() => setPreviewOpen(true)}
                                     isAligning={isAligning}
+                                    hasAlignedResume={Boolean(selectedVersion)}
                                 />
-                            </div>
-                        ) : null}
-                        {result && selectedVersion ? (
-                            <div ref={previewRef} className="scroll-mt-24">
-                                <AlignedResumePreview
-                                    resumeId={result.resume_id}
-                                    versions={versions}
-                                    selectedVersion={selectedVersion}
-                                    onVersionChange={setSelectedVersion}
-                                    onRegenerate={() =>
-                                        void handleGenerateAlignedResume()
-                                    }
-                                    onDownload={() =>
-                                        void handleDownloadResume()
-                                    }
-                                    isAligning={isAligning}
-                                    isDownloading={isDownloading}
-                                />
+                                {selectedVersion ? (
+                                    <div>
+                                        <AlignedResumePreview
+                                            resumeId={result.resume_id}
+                                            versions={versions}
+                                            selectedVersion={selectedVersion}
+                                            onVersionChange={setSelectedVersion}
+                                            onRegenerate={() =>
+                                                void handleGenerateAlignedResume()
+                                            }
+                                            onDownload={() =>
+                                                void handleDownloadResume()
+                                            }
+                                            isAligning={isAligning}
+                                            isDownloading={isDownloading}
+                                            open={previewOpen}
+                                            onOpenChange={setPreviewOpen}
+                                        />
+                                    </div>
+                                ) : null}
                             </div>
                         ) : null}
                     </div>

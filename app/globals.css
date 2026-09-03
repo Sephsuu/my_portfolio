@@ -181,6 +181,10 @@ html {
   --color-roast: #58382a;
   --color-dark: #1c1917;
   --color-darkbrown: #58382a;
+  --color-darkgreen: #1f5d42;
+  --color-darkolive: #556b2f;
+  --color-darkyellow: #8a6200;
+  --color-darkred: #842f3a;
 }
 
 @layer base {
