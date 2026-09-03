@@ -1,15 +1,10 @@
 import "server-only";
 
 import { RequestServerError } from "@/lib/http/request-server";
-
-const API_BASE_URL = (
-    process.env.RESUME_ALIGNER_API_URL ??
-    process.env.NEXT_PUBLIC_API_URL ??
-    "http://127.0.0.1:8000"
-).replace(/\/$/, "");
+import { getSephsuuApiUrl } from "@/lib/http/api-server";
 
 export function getResumeAlignerUrl(path: string) {
-    return `${API_BASE_URL}/resume-aligner${path}`;
+    return getSephsuuApiUrl(`/resume-aligner${path}`);
 }
 
 export function getResumeAlignerErrorMessage(error: RequestServerError) {

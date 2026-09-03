@@ -1,6 +1,6 @@
 import "server-only";
 
-import { BASE_URL } from "@/lib/utils";
+import { getSephsuuApiUrl } from "@/lib/http/api-server";
 
 type RequestMethod = "GET" | "POST" | "PUT" | "PATCH" | "DELETE";
 
@@ -26,39 +26,28 @@ export async function requestServerData<T = unknown>(
     method: RequestMethod,
     headers?: HeadersInit,
     body?: unknown,
-    options?: RequestServerOptions
-): Promise<{ status: number; data: T, headers: Headers }> {
-
+    options?: RequestServerOptions,
+): Promise<{ status: number; data: T; headers: Headers }> {
     const { onUnauthorized, onForbidden } = options ?? {};
 
     const isAbsolute = /^https?:\/\//i.test(url);
-    const fullUrl = isAbsolute ? url : `${BASE_URL}${url}`;
+    const fullUrl = isAbsolute ? url : getSephsuuApiUrl(url);
 
     const finalHeaders = new Headers(headers ?? {});
 
     if (!(body instanceof FormData)) {
-
         if (!finalHeaders.has("Accept")) {
-            finalHeaders.set(
-                "Accept",
-                "application/json"
-            );
+            finalHeaders.set("Accept", "application/json");
         }
 
         if (!finalHeaders.has("Content-Type")) {
-            finalHeaders.set(
-                "Content-Type",
-                "application/json"
-            );
+            finalHeaders.set("Content-Type", "application/json");
         }
     }
 
     console.log("URL: ", fullUrl);
     console.log("Method: ", method);
-    console.log(
-        "Headers: ",
-        Object.fromEntries(finalHeaders.entries())
-    );
+    console.log("Headers: ", Object.fromEntries(finalHeaders.entries()));
     console.log("Body: ", body);
 
     const res = await fetch(fullUrl, {
@@ -68,68 +57,51 @@ export async function requestServerData<T = unknown>(
             body instanceof FormData
                 ? body
                 : body
-                ? JSON.stringify(body)
-                : undefined,
+                  ? JSON.stringify(body)
+                  : undefined,
     });
 
     console.log(res);
     console.log("Response Status: ", res.status);
-    console.log('\n');
-    
+    console.log("\n");
 
     if (res.status === 401) {
-
         if (onUnauthorized) {
             await onUnauthorized();
         }
 
-        throw new RequestServerError(
-            "Unauthorized",
-            401,
-            { message: "Unauthorized" }
-        );
+        throw new RequestServerError("Unauthorized", 401, {
+            message: "Unauthorized",
+        });
     }
 
     if (res.status === 403) {
-
         if (onForbidden) {
             await onForbidden();
         }
 
-        throw new RequestServerError(
-            "Forbidden",
-            403,
-            { message: "Forbidden" }
-        );
+        throw new RequestServerError("Forbidden", 403, {
+            message: "Forbidden",
+        });
     }
 
-    const data =
-        await res.json().catch(
-            () => ({} as T)
-        );
+    const data = await res.json().catch(() => ({}) as T);
 
     if (!res.ok) {
-
         const message =
-            typeof data === "object" &&
-            data &&
-            "message" in data
+            typeof data === "object" && data && "message" in data
                 ? String(
-                    (data as { message?: unknown }).message ??
-                    `Request failed (${res.status})`
-                )
+                      (data as { message?: unknown }).message ??
+                          `Request failed (${res.status})`,
+                  )
                 : `Request failed (${res.status})`;
 
-        throw new RequestServerError(
-            message,
-            res.status,
-            data
-        );
+        throw new RequestServerError(message, res.status, data);
     }
 
     return {
         status: res.status,
         data,
-        headers: res.headers
+        headers: res.headers,
     };
 }

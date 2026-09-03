@@ -5,12 +5,7 @@ import {
     requestServerData,
 } from "@/lib/http/request-server";
 import type { SephsuuRequest } from "@/service/sephsuu.service";
-
-const API_BASE_URL = (
-    process.env.SEPHSUU_API_URL ??
-    process.env.NEXT_PUBLIC_API_URL ??
-    "https://papiverse-chatbot.onrender.com"
-).replace(/\/$/, "");
+import { getSephsuuApiUrl } from "@/lib/http/api-server";
 
 export async function POST(request: NextRequest) {
     const payload = await request.json().catch(() => null);
@@ -22,7 +17,7 @@ export async function POST(request: NextRequest) {
     if (typeof userInput !== "string" || !userInput.trim()) {
         return NextResponse.json(
             { message: "A non-empty user_input value is required." },
-            { status: 400 }
+            { status: 400 },
         );
     }
 
@@ -32,10 +27,10 @@ export async function POST(request: NextRequest) {
 
     try {
         const response = await requestServerData(
-            `${API_BASE_URL}/sephsuu`,
+            getSephsuuApiUrl("/sephsuu"),
             "POST",
             undefined,
-            requestBody
+            requestBody,
         );
 
         return NextResponse.json(response.data, { status: response.status });
@@ -46,13 +41,13 @@ export async function POST(request: NextRequest) {
                     message: error.message,
                     details: error.payload,
                 },
-                { status: error.status }
+                { status: error.status },
             );
         }
 
         return NextResponse.json(
             { message: "Unable to reach the Sephsuu assistant." },
-            { status: 502 }
+            { status: 502 },
         );
     }
 }
